@@ -1,0 +1,1 @@
+// Power Automate API stubs

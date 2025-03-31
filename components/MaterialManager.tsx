@@ -1,0 +1,1 @@
+const MaterialManager = () => <>Material Manager</>; export default MaterialManager;

@@ -1,0 +1,1 @@
+const Layout = ({ children }: any) => <div>{children}</div>; export default Layout;

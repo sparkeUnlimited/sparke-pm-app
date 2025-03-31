@@ -1,0 +1,1 @@
+const DailySafetyReview = () => <>Daily Safety Review</>; export default DailySafetyReview;

@@ -1,0 +1,1 @@
+const SyncStatusDashboard = () => <>Sync Status Dashboard</>; export default SyncStatusDashboard;

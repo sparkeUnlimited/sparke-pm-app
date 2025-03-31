@@ -1,0 +1,1 @@
+const GCSharedDashboard = () => <>GC Dashboard</>; export default GCSharedDashboard;

@@ -1,0 +1,1 @@
+const JobSiteJournalForm = () => <>Job Site Journal Form</>; export default JobSiteJournalForm;

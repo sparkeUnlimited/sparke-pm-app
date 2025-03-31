@@ -1,0 +1,1 @@
+const EquipmentSafetyCheck = () => <>Equipment Safety Check</>; export default EquipmentSafetyCheck;

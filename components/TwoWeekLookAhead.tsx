@@ -1,0 +1,1 @@
+const TwoWeekLookAhead = () => <>2-Week Look Ahead</>; export default TwoWeekLookAhead;

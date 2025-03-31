@@ -1,0 +1,1 @@
+const DailyScheduleSummary = () => <>Daily Schedule Summary</>; export default DailyScheduleSummary;

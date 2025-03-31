@@ -1,0 +1,1 @@
+const LookAheadReport = () => <>Look Ahead Report</>; export default LookAheadReport;
