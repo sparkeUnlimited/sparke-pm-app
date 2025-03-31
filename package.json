@@ -1,0 +1,32 @@
+{
+  "name": "sparke-pm-app",
+  "version": "1.0.0",
+  "description": "A job site management app with offline support, task tracking, and safety forms.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sparkeUnlimited/sparke-pm-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/sparkeUnlimited/sparke-pm-app/issues"
+  },
+  "homepage": "https://github.com/sparkeUnlimited/sparke-pm-app#readme",
+  "dependencies": {
+    "next": "^15.2.4",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  }
+}
