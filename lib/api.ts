@@ -1,1 +1,4 @@
-// Power Automate API stubs
+export const sendMaterialEmailReport = async (materials?: any[]) => {
+    console.log("Emailing material order summary...", materials);
+  };
+  
