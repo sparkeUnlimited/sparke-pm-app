@@ -1,3 +1,4 @@
+"use client";
 import Layout from "@/layout/Layout";
 import DailySafetyReview from "@/components/DailySafetyReview";
 import EquipmentSafetyCheck from "@/components/EquipmentSafetyCheck";

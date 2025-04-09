@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useState } from "react";
 import { getTasks } from "@/lib/msLists";
 import { Box, Paper, Stack, Typography, LinearProgress, Button } from "@mui/material";

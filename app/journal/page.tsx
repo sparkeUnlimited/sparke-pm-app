@@ -1,3 +1,4 @@
+"use client";
 import Layout from "@/layout/Layout";
 import JobSiteJournalForm from "@/components/JobSiteJournalForm";
 import DailyScheduleSummary from "@/components/DailyScheduleSummary";

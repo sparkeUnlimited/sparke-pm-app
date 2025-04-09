@@ -3,12 +3,14 @@ import { Box, Button, Paper, Stack, TextField, Typography } from "@mui/material"
 
 type Subtask = { name: string };
 type Material = { name: string; dateNeeded: string; leadTimeDays: number };
+type Equipment = { name: string; dateNeeded: string; leadTimeDays: number };
 
 const TaskEntryForm = () => {
   const [taskName, setTaskName] = useState("");
   const [durationDays, setDurationDays] = useState<number>(1);
   const [subtasks, setSubtasks] = useState<Subtask[]>([]);
   const [materials, setMaterials] = useState<Material[]>([]);
+  const [equipment, setEquipment] = useState<Equipment[]>([]);
 
   const addSubtask = () => setSubtasks([...subtasks, { name: "" }]);
   const updateSubtask = (index: number, value: string) => {
@@ -35,6 +37,19 @@ const TaskEntryForm = () => {
     const taskData = { taskName, durationDays, subtasks, materials };
     console.log("Task Submitted:", taskData);
     // TODO: Submit to Microsoft Lists
+  };
+
+  const addEquipment = () =>
+    setEquipment([...equipment, { name: "", dateNeeded: "", leadTimeDays: 0 }]);
+
+  const updateEquipment = <K extends keyof Equipment>(
+    index: number,
+    field: K,
+    value: Equipment[K]
+  ) => {
+    const updated = [...equipment];
+    updated[index] = { ...updated[index], [field]: value };
+    setEquipment(updated);
   };
 
   return (
@@ -111,7 +126,39 @@ const TaskEntryForm = () => {
               + Add Material
             </Button>
           </Box>
-
+          <Box>
+            <Typography fontWeight="medium">Required Equipment</Typography>
+            <Stack spacing={2} mt={1}>
+              {equipment.map((mat, i) => (
+                <Stack key={i} direction="row" spacing={2}>
+                  <TextField
+                    value={mat.name}
+                    onChange={(e) => updateEquipment(i, "name", e.target.value)}
+                    label="Equipment Name"
+                    fullWidth
+                  />
+                  <TextField
+                    type="date"
+                    value={mat.dateNeeded}
+                    onChange={(e) => updateEquipment(i, "dateNeeded", e.target.value)}
+                    label="Date Needed"
+                    fullWidth
+                    InputLabelProps={{ shrink: true }}
+                  />
+                  <TextField
+                    type="number"
+                    value={mat.leadTimeDays}
+                    onChange={(e) => updateEquipment(i, "leadTimeDays", Number(e.target.value))}
+                    label="Lead Time (days)"
+                    fullWidth
+                  />
+                </Stack>
+              ))}
+            </Stack>
+            <Button onClick={addEquipment} sx={{ mt: 1 }}>
+              + Add Equipment
+            </Button>
+          </Box>
           <Button type="submit" variant="contained">
             Save Task
           </Button>

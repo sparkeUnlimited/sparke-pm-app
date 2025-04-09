@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useState } from "react";
 import { getTasks, getMaterials } from "@/lib/msLists";
 import Grid from "@mui/material/Grid";

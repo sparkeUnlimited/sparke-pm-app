@@ -1,41 +1,59 @@
 "use client";
 
 import * as React from "react";
-import { useRouter } from "next/router";
-import {
-  AppBar,
-  Box,
-  Toolbar,
-  IconButton,
-  Typography,
-  Menu,
-  MenuItem,
-  Container,
-  Button,
-} from "@mui/material";
+import Container from "@mui/material/Container";
+import IconButton from "@mui/material/IconButton";
+import Logo from "@/components/Logo";
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
+import Image from "next/image";
 import MenuIcon from "@mui/icons-material/Menu";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import HomeIcon from "@mui/icons-material/Home";
+/* import ElectricalServicesIcon from "@mui/icons-material/ElectricalServices";
+import CampaignIcon from "@mui/icons-material/Campaign";
+import InfoIcon from "@mui/icons-material/Info";
+import AlternateEmailIcon from "@mui/icons-material/AlternateEmail";
+import ContactSupportIcon from "@mui/icons-material/ContactSupport"; */
+import { useRouter } from "next/navigation";
 import WorkIcon from "@mui/icons-material/Work";
 import AssignmentIcon from "@mui/icons-material/Assignment";
 import SafetyCheckIcon from "@mui/icons-material/HealthAndSafety";
 import BuildIcon from "@mui/icons-material/Build";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import NotesIcon from "@mui/icons-material/StickyNote2";
-import Image from "next/image";
 
-const pages = [
-  { label: "Journal", icon: <NotesIcon fontSize="large" />, route: "/journal" },
-  { label: "Tasks", icon: <AssignmentIcon fontSize="large" />, route: "/tasks" },
-  { label: "Look Ahead", icon: <WorkIcon fontSize="large" />, route: "/lookahead" },
-  { label: "Safety", icon: <SafetyCheckIcon fontSize="large" />, route: "/safety" },
-  { label: "Tools", icon: <BuildIcon fontSize="large" />, route: "/tools" },
-  { label: "Dashboard", icon: <DashboardIcon fontSize="large" />, route: "/dashboard" },
-];
+const pages = ["Journal", "Tasks", "Look Ahead", "Safety", "Tools", "Dashboard"];
+const pageIcons = {
+  Home: <HomeIcon fontSize="large" />,
+  Journal: <NotesIcon fontSize="large" />,
+  Tasks: <AssignmentIcon fontSize="large" />,
+  "Look Ahead": <WorkIcon fontSize="large" />,
+  Safety: <SafetyCheckIcon fontSize="large" />,
+  Tools: <BuildIcon fontSize="large" />,
+  Dashboard: <DashboardIcon fontSize="large" />,
+};
 
 export default function Nav() {
   const router = useRouter();
-  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
 
-  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
+  const pageRoutes = {
+    Home: "/",
+    Journal: "/journal",
+    Tasks: "/tasks",
+    "Look Ahead": "/lookahead",
+    Safety: "/safety",
+    Tools: "/tools",
+    Dashboard: "/dashboard",
+  };
+
+  const [anchorElNav, setAnchorElNav] = React.useState(null);
+
+  const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
 
@@ -44,10 +62,9 @@ export default function Nav() {
   };
 
   return (
-    <AppBar position="static" sx={{ backgroundColor: "rgba(0, 0, 0, 0.85)", mb: 3 }}>
+    <AppBar sx={{ backgroundColor: "inherit" }} position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          {/* Logo + Mobile Nav Button */}
           <Box
             sx={{
               flexGrow: 1,
@@ -58,67 +75,104 @@ export default function Nav() {
             <Image
               src="/assets/img/Sparke_Full_Logo.png"
               alt="logo"
-              width={150}
-              height={150}
+              width={100}
+              height={100}
               style={{ objectFit: "contain" }}
             />
             <IconButton
               size="large"
+              aria-label="account of current user"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
               onClick={handleOpenNavMenu}
               color="inherit"
-              aria-label="menu"
-              edge="start"
             >
               <MenuIcon />
             </IconButton>
             <Menu
+              id="menu-appbar"
               anchorEl={anchorElNav}
-              anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
-              transformOrigin={{ vertical: "top", horizontal: "left" }}
+              anchorOrigin={{
+                vertical: "bottom",
+                horizontal: "left",
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "left",
+              }}
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
               sx={{ display: { xs: "block", md: "none" } }}
             >
-              {pages.map(({ label, route, icon }) => (
+              {pages.map((page) => (
                 <MenuItem
-                  key={label}
+                  sx={{
+                    background:
+                      page === "Contact Us"
+                        ? "linear-gradient(to right, #f59e0b, #ea580c, #fbbf24)"
+                        : "inherit",
+                    borderRadius: "9999px",
+                    border: page === "Contact Us" ? "2px solid transparent" : "none",
+                    position: "relative",
+                    overflow: "hidden",
+                    pointerEvents: page === "Promotions" ? "none" : "auto",
+                    opacity: page === "Promotions" ? 0.5 : 1,
+                  }}
+                  key={page}
                   onClick={() => {
-                    handleCloseNavMenu();
-                    router.push(route);
+                    handleCloseNavMenu(); // Close the menu
+                    router.push(pageRoutes[page]); // Navigate to the desired page
                   }}
                 >
-                  {icon}
-                  <Typography sx={{ marginLeft: 1 }}>{label}</Typography>
+                  {pageIcons[page]}
+                  <Typography sx={{ textAlign: "center", marginLeft: 1 }}>{page}</Typography>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
 
-          {/* Logo + Desktop Buttons */}
           <Box
-            sx={{ flexGrow: 1, display: { xs: "none", md: "flex" }, alignItems: "center", gap: 2 }}
+            sx={{
+              flexGrow: 1,
+              display: { xs: "none", md: "flex" },
+              justifyContent: "space-between",
+            }}
           >
-            <Image
-              src="/assets/img/Sparke_Full_Logo.png"
-              alt="logo"
-              width={150}
-              height={150}
-              style={{ objectFit: "contain" }}
-            />
-            {pages.map(({ label, route, icon }) => (
+            <Button onClick={() => router.push(pageRoutes.Home)}>
+              <Image
+                src="/assets/img/Sparke_Full_Logo.png"
+                alt="logo"
+                width={100}
+                height={100}
+                style={{ objectFit: "contain" }}
+              />
+            </Button>
+
+            {pages.map((page) => (
               <Button
-                key={label}
-                onClick={() => router.push(route)}
-                startIcon={icon}
+                key={page}
+                onClick={() => router.push(pageRoutes[page])}
                 sx={{
-                  my: 2,
-                  color: "white",
-                  fontWeight: "bold",
+                  my: 3,
+                  color: page === "Contact Us" ? "black" : "white",
+                  fontWeight: 800,
+                  display: "flex",
+                  pointerEvents: page === "Promotions" ? "none" : "auto",
+                  background:
+                    page === "Contact Us"
+                      ? "linear-gradient(to right, #f59e0b, #ea580c, #fbbf24)"
+                      : "inherit",
                   borderRadius: "9999px",
-                  textTransform: "none",
+                  border: page === "Contact Us" ? "2px solid transparent" : "none",
+                  position: "relative",
+                  overflow: "hidden",
+                  padding: "2px 6px",
+                  opacity: page === "Promotions" ? 0.5 : 1,
                 }}
+                startIcon={pageIcons[page]}
               >
-                {label}
+                {page}
               </Button>
             ))}
           </Box>

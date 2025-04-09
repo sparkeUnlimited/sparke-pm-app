@@ -1,17 +1,7 @@
-import {
-  Box,
-  Button,
-  Paper,
-  Stack,
-  TextField,
-  Typography,
-  Slider,
-} from "@mui/material";
 import { useEffect, useState } from "react";
-import {
-  getTasks,
-  submitJournalEntry,
-} from "@/lib/msLists";
+import { fetchWeather, Weather } from "@/lib/weather";
+import { Box, Button, Paper, Stack, TextField, Typography, Slider } from "@mui/material";
+import { getTasks, submitJournalEntry } from "@/lib/msLists";
 import {
   saveJournalDraft,
   loadJournalDraft,
@@ -31,6 +21,44 @@ const JobSiteJournalForm = () => {
   const [email, setEmail] = useState("");
   const [notes, setNotes] = useState("");
   const [tasks, setTasks] = useState<Task[]>([]);
+  const [weather, setWeather] = useState<Weather | null>(null);
+  const [weatherUpdatedAt, setWeatherUpdatedAt] = useState<string | null>(null);
+
+  const cacheKey = "cachedWeather";
+
+  const getWeather = async () => {
+    const cached = localStorage.getItem(cacheKey);
+    const oneHour = 60 * 60 * 1000;
+
+    if (cached) {
+      const { timestamp, data } = JSON.parse(cached);
+      if (Date.now() - timestamp < oneHour) {
+        setWeather(data);
+        setWeatherUpdatedAt(new Date(timestamp).toLocaleTimeString());
+        return;
+      }
+    }
+
+    try {
+      const pos = await new Promise<GeolocationPosition>((res, rej) =>
+        navigator.geolocation.getCurrentPosition(res, rej)
+      );
+      const { latitude, longitude } = pos.coords;
+      const data = await fetchWeather(latitude, longitude);
+      if (data) {
+        localStorage.setItem(cacheKey, JSON.stringify({ timestamp: Date.now(), data }));
+        setWeather(data);
+        setWeatherUpdatedAt(new Date().toLocaleTimeString());
+      }
+    } catch {
+      const data = await fetchWeather(45.4215, -75.6972); // Ottawa fallback
+      if (data) {
+        localStorage.setItem(cacheKey, JSON.stringify({ timestamp: Date.now(), data }));
+        setWeather(data);
+        setWeatherUpdatedAt(new Date().toLocaleTimeString());
+      }
+    }
+  };
 
   useEffect(() => {
     getTasks().then((tasks) => {
@@ -45,6 +73,8 @@ const JobSiteJournalForm = () => {
         setTasks(draft.tasks || []);
       }
     });
+
+    getWeather();
 
     window.addEventListener("online", trySync);
     return () => window.removeEventListener("online", trySync);
@@ -67,7 +97,13 @@ const JobSiteJournalForm = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const payload = { email, notes, tasks: tasks.map((t) => ({ id: t.id, progress: t.progress })) };
+
+    const payload = {
+      email,
+      notes,
+      tasks: tasks.map((t) => ({ id: t.id, progress: t.progress })),
+      weather,
+    };
 
     if (navigator.onLine) {
       await submitJournalEntry(payload);
@@ -85,9 +121,22 @@ const JobSiteJournalForm = () => {
 
   return (
     <Paper sx={{ p: 4, mt: 4 }} elevation={4}>
+      {weather && (
+        <Box sx={{ mb: 4 }}>
+          <Typography variant="h5" fontWeight="bold" gutterBottom>
+            Weather
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            🌦 Temp: {weather.temperature}°C | Wind: {weather.windSpeed} km/h
+            {weatherUpdatedAt && ` (as of ${weatherUpdatedAt})`}
+          </Typography>
+        </Box>
+      )}
+
       <Typography variant="h5" fontWeight="bold" gutterBottom>
         Daily Journal
       </Typography>
+
       <Box component="form" onSubmit={handleSubmit}>
         <Stack spacing={3}>
           <TextField
@@ -105,7 +154,9 @@ const JobSiteJournalForm = () => {
             onChange={(e) => setNotes(e.target.value)}
           />
           <Box>
-            <Typography fontWeight="medium" gutterBottom>Task Completion</Typography>
+            <Typography fontWeight="medium" gutterBottom>
+              Task Completion
+            </Typography>
             <Stack spacing={3}>
               {tasks.map((task) => (
                 <Box key={task.id}>
@@ -121,7 +172,9 @@ const JobSiteJournalForm = () => {
               ))}
             </Stack>
           </Box>
-          <Button type="submit" variant="contained">Submit</Button>
+          <Button type="submit" variant="contained">
+            Submit
+          </Button>
         </Stack>
       </Box>
     </Paper>

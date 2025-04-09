@@ -1,3 +1,4 @@
+"use client";
 import Layout from "@/layout/Layout";
 import LookAheadReport from "@/components/LookAheadReport";
 import MaterialManager from "@/components/MaterialManager";
