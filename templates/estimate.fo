@@ -1,0 +1,13 @@
+<!-- XSL-FO template placeholder for estimate PDF -->
+<fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format">
+  <fo:layout-master-set>
+    <fo:simple-page-master master-name="simple" margin="1in">
+      <fo:region-body/>
+    </fo:simple-page-master>
+  </fo:layout-master-set>
+  <fo:page-sequence master-reference="simple">
+    <fo:flow flow-name="xsl-region-body">
+      <!-- TODO: Populate with estimate data -->
+    </fo:flow>
+  </fo:page-sequence>
+</fo:root>
