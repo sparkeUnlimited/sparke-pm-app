@@ -1,7 +1,7 @@
 {
   "name": "sparke-pm-app",
   "version": "1.0.0",
-  "description": "A job site management app with offline support, task tracking, and safety forms.",
+  "description": "A job site management app with offline support, task tracking, safety forms and estimating.",
   "main": "index.js",
   "directories": {
     "lib": "lib"
