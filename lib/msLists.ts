@@ -64,3 +64,16 @@ export const updateMaterialStatus = async (
 ) => {
   console.log(`Updating material ${id} to ${status}`, notes ? `Notes: ${notes}` : "");
 };
+
+export type ServiceItem = {
+  id: string;
+  name: string;
+  labourUnits: number;
+};
+
+export const getServices = async (): Promise<ServiceItem[]> => {
+  return [
+    { id: "svc-1", name: "Lighting Install", labourUnits: 1.5 },
+    { id: "svc-2", name: "Receptacle", labourUnits: 0.5 },
+  ];
+};
