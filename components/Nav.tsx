@@ -27,7 +27,15 @@ import BuildIcon from "@mui/icons-material/Build";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import NotesIcon from "@mui/icons-material/StickyNote2";
 
-const basePages = ["Journal", "Tasks", "Look Ahead", "Safety", "Tools", "Dashboard"] as const;
+const basePages = [
+  "Estimate",
+  "Journal",
+  "Tasks",
+  "Look Ahead",
+  "Safety",
+  "Tools",
+  "Dashboard",
+] as const;
 const pageIcons = {
   Home: <HomeIcon fontSize="large" />,
   Estimate: <DashboardIcon fontSize="large" />,
@@ -42,18 +50,7 @@ const pageIcons = {
 export default function Nav() {
   const router = useRouter();
 
-  const [loggedIn, setLoggedIn] = React.useState(false);
-  const pages = React.useMemo(() => {
-    const list = [...basePages];
-    if (loggedIn) list.unshift("Estimate");
-    return list;
-  }, [loggedIn]);
-
-  React.useEffect(() => {
-    if (typeof window !== "undefined") {
-      setLoggedIn(localStorage.getItem("loggedIn") === "true");
-    }
-  }, []);
+  const pages = [...basePages] as string[];
 
   const pageRoutes = {
     Home: "/",
