@@ -68,12 +68,24 @@ export const updateMaterialStatus = async (
 export type ServiceItem = {
   id: string;
   name: string;
-  labourUnits: number;
+  labourRate: number;
 };
 
 export const getServices = async (): Promise<ServiceItem[]> => {
   return [
-    { id: "svc-1", name: "Lighting Install", labourUnits: 1.5 },
-    { id: "svc-2", name: "Receptacle", labourUnits: 0.5 },
+    { id: "svc-1", name: "Residential Service/Repair", labourRate: 125 },
+    { id: "svc-2", name: "Residential Renovation", labourRate: 125 },
+    { id: "svc-3", name: "Residential New Construction", labourRate: 125 },
+    { id: "svc-4", name: "Commercial Service/Repair", labourRate: 145 },
+    { id: "svc-5", name: "Commercial Tenant Fit-Up", labourRate: 145 },
+    { id: "svc-6", name: "Commercial New Construction", labourRate: 145 },
+    { id: "svc-7", name: "Commercial Change Order", labourRate: 194 },
+    { id: "svc-8", name: "EV Charger Install (Residential)", labourRate: 125 },
+    { id: "svc-9", name: "EV Charger Install (Commercial)", labourRate: 145 },
+    { id: "svc-10", name: "Fire Alarm Install", labourRate: 145 },
+    { id: "svc-11", name: "Fire Alarm Change Request", labourRate: 194 },
+    { id: "svc-12", name: "Generator Install (Residential)", labourRate: 125 },
+    { id: "svc-13", name: "Generator Install (Commercial)", labourRate: 145 },
+    { id: "svc-14", name: "Low-Voltage / Smart Home", labourRate: 125 },
   ];
 };
