@@ -2,7 +2,6 @@ import { Box, Container } from "@mui/material";
 import Head from "next/head";
 import Nav from "@/components/Nav"; // make sure this exists or replace with your nav
 import { ReactNode } from "react";
-import "/styles/globals.css";
 
 type LayoutProps = {
   title?: string;
