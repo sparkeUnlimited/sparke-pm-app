@@ -57,6 +57,18 @@ const Home = () => {
           variant={"body1"}
           sx={{ textAlign: "left", marginBottom: 1, paddingLeft: 2, fontWeight: "bold" }}
         >
+          Estimate
+        </Typography>
+        <Typography
+          variant={"body1"}
+          sx={{ textAlign: "left", marginBottom: 1, paddingLeft: 2, fontWeight: "medium" }}
+        >
+          This is used to estimate jobs. A PDF will be sent to the customer and Ryan.
+        </Typography>
+        <Typography
+          variant={"body1"}
+          sx={{ textAlign: "left", marginBottom: 1, paddingLeft: 2, fontWeight: "bold" }}
+        >
           Job Site Journal
         </Typography>
         <Typography
