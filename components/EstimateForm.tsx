@@ -53,6 +53,7 @@ const formatPostalCode = (value: string) => {
 export type EstimateRow = {
   serviceId?: string;
   labourUnits: number;
+  labourRate: number;
   unit: "Each" | "C" | "M";
 };
 
@@ -78,8 +79,11 @@ const EstimateForm = () => {
   const [contactMethod, setContactMethod] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
+  const [workType, setWorkType] = useState("");
 
-  const [labourRows, setLabourRows] = useState<EstimateRow[]>([{ labourUnits: 0, unit: "Each" }]);
+  const [labourRows, setLabourRows] = useState<EstimateRow[]>([
+    { labourUnits: 0, labourRate: 0, unit: "Each" },
+  ]);
   const [materialRows, setMaterialRows] = useState<MaterialRow[]>([
     { name: "", units: 0, unitCost: 0, unit: "Each" },
   ]);
@@ -104,10 +108,11 @@ const EstimateForm = () => {
     postalCode &&
     contactMethod &&
     phone &&
-    email;
+    email &&
+    workType;
 
   const addLabourRow = () => {
-    setLabourRows((r) => [...r, { labourUnits: 0, unit: "Each" }]);
+    setLabourRows((r) => [...r, { labourUnits: 0, labourRate: 0, unit: "Each" }]);
   };
 
   const removeLabourRow = (idx: number) => {
@@ -130,7 +135,11 @@ const EstimateForm = () => {
     setMaterialRows((r) => r.map((item, i) => (i === idx ? { ...item, ...row } : item)));
   };
 
-  const labourSum = labourRows.reduce((sum, r) => sum + r.labourUnits / unitDivisor[r.unit], 0);
+  const labourSum = labourRows.reduce((sum, r) => {
+    const units = r.labourUnits < 2 ? 2 : r.labourUnits;
+    const divisor = r.labourUnits < 2 ? 1 : unitDivisor[r.unit];
+    return sum + (units * r.labourRate) / divisor;
+  }, 0);
   const labourMarkupAmt = labourSum * (labourMarkup / 100);
   const totalLabour = labourSum + labourMarkupAmt;
 
@@ -168,6 +177,7 @@ const EstimateForm = () => {
         contactMethod,
         phone,
         email,
+        workType,
       },
       labourRows,
       materialRows,
@@ -294,6 +304,21 @@ const EstimateForm = () => {
             </Stack>
           </Box>
 
+          <Box>
+            <FormControl fullWidth required>
+              <InputLabel id="work-type-label">Work Type</InputLabel>
+              <Select
+                labelId="work-type-label"
+                label="Work Type"
+                value={workType}
+                onChange={(e) => setWorkType(e.target.value)}
+              >
+                <MenuItem value="Residential">Residential</MenuItem>
+                <MenuItem value="Commercial">Commercial</MenuItem>
+              </Select>
+            </FormControl>
+          </Box>
+
           {customerValid && (
             <>
               <Typography variant="h6" fontWeight="bold">
@@ -304,6 +329,7 @@ const EstimateForm = () => {
                   <TableRow>
                     <TableCell>Service</TableCell>
                     <TableCell>Labour Units</TableCell>
+                    <TableCell>Labour Rate</TableCell>
                     <TableCell>Unit Amount</TableCell>
                     <TableCell>Extension</TableCell>
                     <TableCell />
@@ -312,8 +338,11 @@ const EstimateForm = () => {
                 <TableBody>
                   {labourRows.map((row, idx) => {
                     const service = services.find((s) => s.id === row.serviceId);
-                    const units = service ? service.labourUnits : row.labourUnits;
-                    const ext = units / unitDivisor[row.unit];
+                    const rate = service ? service.labourRate : row.labourRate;
+                    const units = row.labourUnits;
+                    const effectiveUnits = units < 2 ? 2 : units;
+                    const divisor = units < 2 ? 1 : unitDivisor[row.unit];
+                    const ext = (effectiveUnits * rate) / divisor;
                     return (
                       <TableRow key={idx}>
                         <TableCell>
@@ -325,8 +354,8 @@ const EstimateForm = () => {
                               onChange={(e) =>
                                 updateLabourRow(idx, {
                                   serviceId: e.target.value,
-                                  labourUnits:
-                                    services.find((s) => s.id === e.target.value)?.labourUnits || 0,
+                                  labourRate:
+                                    services.find((s) => s.id === e.target.value)?.labourRate || 0,
                                 })
                               }
                             >
@@ -348,6 +377,7 @@ const EstimateForm = () => {
                             }
                           />
                         </TableCell>
+                        <TableCell>{rate}</TableCell>
                         <TableCell>
                           <Select
                             size="small"
