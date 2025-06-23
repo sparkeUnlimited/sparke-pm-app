@@ -25,6 +25,30 @@ import AddIcon from "@mui/icons-material/Add";
 import { getServices, ServiceItem } from "@/lib/msLists";
 import { sendEstimateEmail, ensureCustomerFolder } from "@/lib/api";
 
+const provinces = [
+  { code: "AB", name: "Alberta" },
+  { code: "BC", name: "British Columbia" },
+  { code: "MB", name: "Manitoba" },
+  { code: "NB", name: "New Brunswick" },
+  { code: "NL", name: "Newfoundland and Labrador" },
+  { code: "NS", name: "Nova Scotia" },
+  { code: "NT", name: "Northwest Territories" },
+  { code: "NU", name: "Nunavut" },
+  { code: "ON", name: "Ontario" },
+  { code: "PE", name: "Prince Edward Island" },
+  { code: "QC", name: "Quebec" },
+  { code: "SK", name: "Saskatchewan" },
+  { code: "YT", name: "Yukon" },
+] as const;
+
+const formatPostalCode = (value: string) => {
+  const upper = value.toUpperCase().replace(/[^A-Z0-9]/g, "");
+  const first = upper.slice(0, 3);
+  const last = upper.slice(3, 6);
+  return last ? `${first} ${last}` : first;
+};
+
+
 export type EstimateRow = {
   serviceId?: string;
   labourUnits: number;
@@ -34,6 +58,7 @@ export type EstimateRow = {
 export type MaterialRow = {
   name: string;
   units: number;
+  unitCost: number;
   unit: "Each" | "C" | "M";
 };
 
@@ -55,7 +80,7 @@ const EstimateForm = () => {
 
   const [labourRows, setLabourRows] = useState<EstimateRow[]>([{ labourUnits: 0, unit: "Each" }]);
   const [materialRows, setMaterialRows] = useState<MaterialRow[]>([
-    { name: "", units: 0, unit: "Each" },
+    { name: "", units: 0, unitCost: 0, unit: "Each" },
   ]);
 
   const [labourMarkup, setLabourMarkup] = useState(0);
@@ -77,7 +102,8 @@ const EstimateForm = () => {
     province &&
     postalCode &&
     contactMethod &&
-    (contactMethod === "phone" ? phone : email);
+    phone &&
+    email;
 
   const addLabourRow = () => {
     setLabourRows((r) => [...r, { labourUnits: 0, unit: "Each" }]);
@@ -92,7 +118,7 @@ const EstimateForm = () => {
   };
 
   const addMaterialRow = () => {
-    setMaterialRows((r) => [...r, { name: "", units: 0, unit: "Each" }]);
+    setMaterialRows((r) => [...r, { name: "", units: 0, unitCost: 0, unit: "Each" }]);
   };
 
   const removeMaterialRow = (idx: number) => {
@@ -107,7 +133,10 @@ const EstimateForm = () => {
   const labourMarkupAmt = labourSum * (labourMarkup / 100);
   const totalLabour = labourSum + labourMarkupAmt;
 
-  const materialSum = materialRows.reduce((sum, r) => sum + r.units / unitDivisor[r.unit], 0);
+  const materialSum = materialRows.reduce(
+    (sum, r) => sum + r.units * (r.unitCost / unitDivisor[r.unit]),
+    0
+  );
   const materialMarkupAmt = materialSum * (materialMarkup / 100);
   const totalMaterial = materialSum + materialMarkupAmt;
 
@@ -205,16 +234,25 @@ const EstimateForm = () => {
               onChange={(e) => setCity(e.target.value)}
               required
             />
-            <TextField
-              label="Province"
-              value={province}
-              onChange={(e) => setProvince(e.target.value)}
-              required
-            />
+            <FormControl fullWidth required>
+              <InputLabel id="prov">Province</InputLabel>
+              <Select
+                labelId="prov"
+                label="Province"
+                value={province}
+                onChange={(e) => setProvince(e.target.value)}
+              >
+                {provinces.map((p) => (
+                  <MenuItem key={p.code} value={p.code}>
+                    {p.name}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
             <TextField
               label="Postal Code"
               value={postalCode}
-              onChange={(e) => setPostalCode(e.target.value)}
+              onChange={(e) => setPostalCode(formatPostalCode(e.target.value))}
               required
             />
           </Stack>
@@ -235,16 +273,14 @@ const EstimateForm = () => {
                 label="Phone"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
-                disabled={contactMethod !== "phone"}
-                required={contactMethod === "phone"}
+                required
               />
               <TextField
                 label="Email"
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                disabled={contactMethod !== "email"}
-                required={contactMethod === "email"}
+                required
               />
             </Stack>
           </Box>
@@ -348,14 +384,15 @@ const EstimateForm = () => {
                   <TableRow>
                     <TableCell>Description</TableCell>
                     <TableCell>Units</TableCell>
-                    <TableCell>Unit Amount</TableCell>
+                    <TableCell>Unit Cost</TableCell>
+                    <TableCell>Unit Multiplier</TableCell>
                     <TableCell>Extension</TableCell>
                     <TableCell />
                   </TableRow>
                 </TableHead>
                 <TableBody>
                   {materialRows.map((row, idx) => {
-                    const ext = row.units / unitDivisor[row.unit];
+                    const ext = row.units * (row.unitCost / unitDivisor[row.unit]);
                     return (
                       <TableRow key={idx}>
                         <TableCell>
@@ -372,6 +409,16 @@ const EstimateForm = () => {
                             value={row.units}
                             onChange={(e) =>
                               updateMaterialRow(idx, { units: Number(e.target.value) })
+                            }
+                          />
+                        </TableCell>
+                        <TableCell>
+                          <TextField
+                            size="small"
+                            type="number"
+                            value={row.unitCost}
+                            onChange={(e) =>
+                              updateMaterialRow(idx, { unitCost: Number(e.target.value) })
                             }
                           />
                         </TableCell>
