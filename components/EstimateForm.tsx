@@ -47,7 +47,7 @@ const EstimateForm = () => {
   const [streetNum, setStreetNum] = useState("");
   const [streetName, setStreetName] = useState("");
   const [city, setCity] = useState("");
-  const [province, setProvince] = useState("");
+  const [province, setProvince] = useState("ON");
   const [postalCode, setPostalCode] = useState("");
   const [contactMethod, setContactMethod] = useState("");
   const [phone, setPhone] = useState("");
