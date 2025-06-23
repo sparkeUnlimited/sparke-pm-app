@@ -49,7 +49,6 @@ const formatPostalCode = (value: string) => {
   return last ? `${first} ${last}` : first;
 };
 
-
 export type EstimateRow = {
   serviceId?: string;
   labourUnits: number;
@@ -69,10 +68,8 @@ const unitDivisor = { Each: 1, C: 100, M: 1000 } as const;
 const EstimateForm = () => {
   const [services, setServices] = useState<ServiceItem[]>([]);
 
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [streetNum, setStreetNum] = useState("");
-  const [streetName, setStreetName] = useState("");
+  const [fullName, setFullName] = useState("");
+  const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
   const [province, setProvince] = useState("ON");
   const [postalCode, setPostalCode] = useState("");
@@ -99,10 +96,8 @@ const EstimateForm = () => {
   }, []);
 
   const customerValid =
-    firstName &&
-    lastName &&
-    streetNum &&
-    streetName &&
+    fullName &&
+    address &&
     city &&
     province &&
     postalCode &&
@@ -167,10 +162,8 @@ const EstimateForm = () => {
     e.preventDefault();
     const data = {
       customer: {
-        firstName,
-        lastName,
-        streetNum,
-        streetName,
+        fullName,
+        address,
         city,
         province,
         postalCode,
@@ -199,7 +192,7 @@ const EstimateForm = () => {
     };
 
     const pdfBlob = new Blob([], { type: "application/pdf" });
-    await ensureCustomerFolder(`${firstName}_${lastName}/${streetName}`);
+    await ensureCustomerFolder(`${fullName}_${address}`);
     await sendEstimateEmail(data, pdfBlob);
   };
 
@@ -210,36 +203,30 @@ const EstimateForm = () => {
           <Typography variant="h5" fontWeight="bold">
             Customer Information
           </Typography>
-          <Stack direction={{ xs: "column", sm: "row" }} spacing={2}>
-            <TextField
-              label="First Name"
-              value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
-              required
-            />
-            <TextField
-              label="Last Name"
-              value={lastName}
-              onChange={(e) => setLastName(e.target.value)}
-              required
-            />
-          </Stack>
-          <Stack direction={{ xs: "column", sm: "row" }} spacing={2}>
-            <TextField
-              label="Street Number"
-              value={streetNum}
-              onChange={(e) => setStreetNum(e.target.value)}
-              required
-            />
-            <TextField
-              label="Street Name"
-              value={streetName}
-              onChange={(e) => setStreetName(e.target.value)}
-              required
-            />
-          </Stack>
           <Grid container spacing={2}>
-            <Grid item xs={12} sm={8}>
+            <Grid size={{ xs: 12, sm: 6 }}>
+              <TextField
+                label="Full Name"
+                value={fullName}
+                onChange={(e) => setFullName(e.target.value)}
+                required
+                fullWidth
+              />
+            </Grid>
+          </Grid>
+          <Grid container spacing={2}>
+            <Grid size={{ xs: 12, sm: 6 }}>
+              <TextField
+                label="Address"
+                value={address}
+                onChange={(e) => setAddress(e.target.value)}
+                required
+                fullWidth
+              />
+            </Grid>
+          </Grid>
+          <Grid container spacing={2}>
+            <Grid size={{ xs: 12, sm: 6 }}>
               <TextField
                 label="City"
                 value={city}
@@ -248,7 +235,7 @@ const EstimateForm = () => {
                 fullWidth
               />
             </Grid>
-            <Grid item xs={6} sm={2}>
+            <Grid size={{ xs: 12, sm: 6 }}>
               <FormControl fullWidth required>
                 <InputLabel id="prov">Province</InputLabel>
                 <Select
@@ -265,7 +252,7 @@ const EstimateForm = () => {
                 </Select>
               </FormControl>
             </Grid>
-            <Grid item xs={6} sm={2}>
+            <Grid size={{ xs: 12, sm: 6 }}>
               <TextField
                 label="Postal Code"
                 value={postalCode}
@@ -284,8 +271,8 @@ const EstimateForm = () => {
               value={contactMethod}
               onChange={(e) => setContactMethod(e.target.value)}
             >
-              <FormControlLabel value="phone" control={<Radio required />} label="Phone/Mobile" />
-              <FormControlLabel value="email" control={<Radio required />} label="Email" />
+              <FormControlLabel value="phone" control={<Radio />} label="Phone/Mobile" />
+              <FormControlLabel value="email" control={<Radio />} label="Email" />
             </RadioGroup>
             <Stack direction={{ xs: "column", sm: "row" }} spacing={2} mt={2}>
               <TextField
@@ -300,6 +287,7 @@ const EstimateForm = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
+                fullWidth
               />
             </Stack>
           </Box>
