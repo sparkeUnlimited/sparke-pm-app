@@ -139,11 +139,16 @@ const EstimateForm = () => {
     setMaterialRows((r) => r.map((item, i) => (i === idx ? { ...item, ...row } : item)));
   };
 
-  const labourSum = labourRows.reduce((sum, r) => {
-    const units = r.labourUnits < 2 ? 2 : r.labourUnits;
-    const divisor = r.labourUnits < 2 ? 1 : unitDivisor[r.unit];
-    return sum + (units * r.labourRate) / divisor;
-  }, 0);
+  const labourHours = labourRows.reduce(
+    (sum, r) => sum + r.labourUnits / unitDivisor[r.unit],
+    0,
+  );
+  const labourCost = labourRows.reduce(
+    (sum, r) => sum + (r.labourUnits * r.labourRate) / unitDivisor[r.unit],
+    0,
+  );
+  const labourMinMultiplier = labourHours > 0 && labourHours < 2 ? 2 / labourHours : 1;
+  const labourSum = labourCost * labourMinMultiplier;
   const labourMarkupAmt = labourSum * (labourMarkup / 100);
   const totalLabour = labourSum + labourMarkupAmt;
 
@@ -324,9 +329,8 @@ const EstimateForm = () => {
                     const service = services.find((s) => s.id === row.serviceId);
                     const rate = service ? service.labourRate : row.labourRate;
                     const units = row.labourUnits;
-                    const effectiveUnits = units < 2 ? 2 : units;
-                    const divisor = units < 2 ? 1 : unitDivisor[row.unit];
-                    const ext = (effectiveUnits * rate) / divisor;
+                    const divisor = unitDivisor[row.unit];
+                    const ext = (units * rate) / divisor;
                     return (
                       <TableRow key={idx}>
                         <TableCell>
