@@ -49,8 +49,16 @@ const formatPostalCode = (value: string) => {
   return last ? `${first} ${last}` : first;
 };
 
+const serviceOptions = [
+  "Pot Lights",
+  "Receptacles",
+  "Strip Lights",
+  "Panel Maintenance",
+] as const;
+
 export type EstimateRow = {
   serviceId?: string;
+  serviceName?: string;
   labourUnits: number;
   labourRate: number;
   unit: "Each" | "C" | "M";
@@ -76,10 +84,9 @@ const EstimateForm = () => {
   const [contactMethod, setContactMethod] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
-  const [workType, setWorkType] = useState("");
 
   const [labourRows, setLabourRows] = useState<EstimateRow[]>([
-    { labourUnits: 0, labourRate: 0, unit: "Each" },
+    { labourUnits: 0, labourRate: 0, unit: "Each", serviceName: "" },
   ]);
   const [materialRows, setMaterialRows] = useState<MaterialRow[]>([
     { name: "", units: 0, unitCost: 0, unit: "Each" },
@@ -103,11 +110,13 @@ const EstimateForm = () => {
     postalCode &&
     contactMethod &&
     phone &&
-    email &&
-    workType;
+    email;
 
   const addLabourRow = () => {
-    setLabourRows((r) => [...r, { labourUnits: 0, labourRate: 0, unit: "Each" }]);
+    setLabourRows((r) => [
+      ...r,
+      { labourUnits: 0, labourRate: 0, unit: "Each", serviceName: "" },
+    ]);
   };
 
   const removeLabourRow = (idx: number) => {
@@ -170,7 +179,6 @@ const EstimateForm = () => {
         contactMethod,
         phone,
         email,
-        workType,
       },
       labourRows,
       materialRows,
@@ -292,20 +300,7 @@ const EstimateForm = () => {
             </Stack>
           </Box>
 
-          <Box>
-            <FormControl fullWidth required>
-              <InputLabel id="work-type-label">Work Type</InputLabel>
-              <Select
-                labelId="work-type-label"
-                label="Work Type"
-                value={workType}
-                onChange={(e) => setWorkType(e.target.value)}
-              >
-                <MenuItem value="Residential">Residential</MenuItem>
-                <MenuItem value="Commercial">Commercial</MenuItem>
-              </Select>
-            </FormControl>
-          </Box>
+
 
           {customerValid && (
             <>
@@ -315,7 +310,8 @@ const EstimateForm = () => {
               <Table size="small">
                 <TableHead>
                   <TableRow>
-                    <TableCell>Service</TableCell>
+                    <TableCell>Work Type</TableCell>
+                    <TableCell>Services</TableCell>
                     <TableCell>Labour Units</TableCell>
                     <TableCell>Labour Rate</TableCell>
                     <TableCell>Unit Amount</TableCell>
@@ -335,10 +331,10 @@ const EstimateForm = () => {
                       <TableRow key={idx}>
                         <TableCell>
                           <FormControl fullWidth size="small">
-                            <InputLabel>Service</InputLabel>
+                            <InputLabel>Work Type</InputLabel>
                             <Select
                               value={row.serviceId || ""}
-                              label="Service"
+                              label="Work Type"
                               onChange={(e) =>
                                 updateLabourRow(idx, {
                                   serviceId: e.target.value,
@@ -350,6 +346,24 @@ const EstimateForm = () => {
                               {services.map((s) => (
                                 <MenuItem key={s.id} value={s.id}>
                                   {s.name}
+                                </MenuItem>
+                              ))}
+                            </Select>
+                          </FormControl>
+                        </TableCell>
+                        <TableCell>
+                          <FormControl fullWidth size="small">
+                            <InputLabel>Services</InputLabel>
+                            <Select
+                              value={row.serviceName || ""}
+                              label="Services"
+                              onChange={(e) =>
+                                updateLabourRow(idx, { serviceName: e.target.value })
+                              }
+                            >
+                              {serviceOptions.map((opt) => (
+                                <MenuItem key={opt} value={opt}>
+                                  {opt}
                                 </MenuItem>
                               ))}
                             </Select>
