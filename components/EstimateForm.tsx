@@ -20,6 +20,7 @@ import {
   InputLabel,
   FormControl,
 } from "@mui/material";
+import Grid from "@mui/material/Grid";
 import DeleteIcon from "@mui/icons-material/Delete";
 import AddIcon from "@mui/icons-material/Add";
 import { getServices, ServiceItem } from "@/lib/msLists";
@@ -227,35 +228,43 @@ const EstimateForm = () => {
               required
             />
           </Stack>
-          <Stack direction={{ xs: "column", sm: "row" }} spacing={2}>
-            <TextField
-              label="City"
-              value={city}
-              onChange={(e) => setCity(e.target.value)}
-              required
-            />
-            <FormControl fullWidth required>
-              <InputLabel id="prov">Province</InputLabel>
-              <Select
-                labelId="prov"
-                label="Province"
-                value={province}
-                onChange={(e) => setProvince(e.target.value)}
-              >
-                {provinces.map((p) => (
-                  <MenuItem key={p.code} value={p.code}>
-                    {p.name}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-            <TextField
-              label="Postal Code"
-              value={postalCode}
-              onChange={(e) => setPostalCode(formatPostalCode(e.target.value))}
-              required
-            />
-          </Stack>
+          <Grid container spacing={2}>
+            <Grid item xs={12} sm={8}>
+              <TextField
+                label="City"
+                value={city}
+                onChange={(e) => setCity(e.target.value)}
+                required
+                fullWidth
+              />
+            </Grid>
+            <Grid item xs={6} sm={2}>
+              <FormControl fullWidth required>
+                <InputLabel id="prov">Province</InputLabel>
+                <Select
+                  labelId="prov"
+                  label="Province"
+                  value={province}
+                  onChange={(e) => setProvince(e.target.value)}
+                >
+                  {provinces.map((p) => (
+                    <MenuItem key={p.code} value={p.code}>
+                      {p.name}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+            </Grid>
+            <Grid item xs={6} sm={2}>
+              <TextField
+                label="Postal Code"
+                value={postalCode}
+                onChange={(e) => setPostalCode(formatPostalCode(e.target.value))}
+                required
+                fullWidth
+              />
+            </Grid>
+          </Grid>
           <Box>
             <Typography fontWeight="medium" gutterBottom>
               Preferred Contact
