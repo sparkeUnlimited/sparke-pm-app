@@ -95,6 +95,7 @@ const EstimateForm = () => {
   const [labourMarkup, setLabourMarkup] = useState(0);
   const [materialMarkup, setMaterialMarkup] = useState(0);
   const [esaFee, setEsaFee] = useState(0);
+  const [hydroFee, setHydroFee] = useState(0);
   const [discountType, setDiscountType] = useState("None");
   const [discountValue, setDiscountValue] = useState(0);
 
@@ -161,7 +162,7 @@ const EstimateForm = () => {
 
   const cost = totalLabour + totalMaterial;
   const warranty = cost * 0.03;
-  const subtotal = cost + warranty + esaFee;
+  const subtotal = cost + warranty + esaFee + hydroFee;
 
   const discountAmt =
     discountType === "Dollar"
@@ -190,6 +191,7 @@ const EstimateForm = () => {
       labourMarkup,
       materialMarkup,
       esaFee,
+      hydroFee,
       discountType,
       discountValue,
       totals: {
@@ -512,10 +514,16 @@ const EstimateForm = () => {
               <Typography>Cost: {cost.toFixed(2)}</Typography>
               <Typography>Warranty (3%): {warranty.toFixed(2)}</Typography>
               <TextField
-                label="ESA Inspection"
+                label="ESA Inspection Fees"
                 type="number"
                 value={esaFee}
                 onChange={(e) => setEsaFee(Number(e.target.value))}
+              />
+              <TextField
+                label="Hydro Fees"
+                type="number"
+                value={hydroFee}
+                onChange={(e) => setHydroFee(Number(e.target.value))}
               />
               <Stack direction={{ xs: "column", sm: "row" }} spacing={2} alignItems="center">
                 <FormControl>
