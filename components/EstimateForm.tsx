@@ -92,8 +92,8 @@ const EstimateForm = () => {
     { name: "", units: 0, unitCost: 0, unit: "Each" },
   ]);
 
-  const [labourMarkup, setLabourMarkup] = useState(0);
-  const [materialMarkup, setMaterialMarkup] = useState(0);
+  const [markup, setMarkup] = useState(30);
+  const [overhead, setOverhead] = useState(25);
   const [esaFee, setEsaFee] = useState(0);
   const [hydroFee, setHydroFee] = useState(0);
   const [discountType, setDiscountType] = useState("None");
@@ -150,17 +150,18 @@ const EstimateForm = () => {
   );
   const labourMinMultiplier = labourHours > 0 && labourHours < 2 ? 2 / labourHours : 1;
   const labourSum = labourCost * labourMinMultiplier;
-  const labourMarkupAmt = labourSum * (labourMarkup / 100);
-  const totalLabour = labourSum + labourMarkupAmt;
+  const totalLabour = labourSum;
 
   const materialSum = materialRows.reduce(
     (sum, r) => sum + r.units * (r.unitCost / unitDivisor[r.unit]),
     0
   );
-  const materialMarkupAmt = materialSum * (materialMarkup / 100);
-  const totalMaterial = materialSum + materialMarkupAmt;
+  const totalMaterial = materialSum;
 
-  const cost = totalLabour + totalMaterial;
+  const baseCost = totalLabour + totalMaterial;
+  const markupAmt = baseCost * (markup / 100);
+  const overheadAmt = baseCost * (overhead / 100);
+  const cost = baseCost + markupAmt + overheadAmt;
   const warranty = cost * 0.03;
   const subtotal = cost + warranty + esaFee + hydroFee;
 
@@ -188,8 +189,8 @@ const EstimateForm = () => {
       },
       labourRows,
       materialRows,
-      labourMarkup,
-      materialMarkup,
+      markup,
+      overhead,
       esaFee,
       hydroFee,
       discountType,
@@ -199,6 +200,9 @@ const EstimateForm = () => {
         materialSum,
         totalLabour,
         totalMaterial,
+        baseCost,
+        markupAmt,
+        overheadAmt,
         cost,
         warranty,
         discountAmt,
@@ -414,13 +418,6 @@ const EstimateForm = () => {
                 </IconButton>
               </Box>
               <Typography>Labour Sum: {labourSum.toFixed(2)}</Typography>
-              <TextField
-                label="Markup %"
-                type="number"
-                value={labourMarkup}
-                onChange={(e) => setLabourMarkup(Number(e.target.value))}
-              />
-              <Typography>Markup Amount: {labourMarkupAmt.toFixed(2)}</Typography>
               <Typography>Total Labour: {totalLabour.toFixed(2)}</Typography>
 
               <Typography variant="h6" fontWeight="bold" mt={4}>
@@ -499,19 +496,26 @@ const EstimateForm = () => {
                 </IconButton>
               </Box>
               <Typography>Material Sum: {materialSum.toFixed(2)}</Typography>
-              <TextField
-                label="Markup %"
-                type="number"
-                value={materialMarkup}
-                onChange={(e) => setMaterialMarkup(Number(e.target.value))}
-              />
-              <Typography>Markup Amount: {materialMarkupAmt.toFixed(2)}</Typography>
               <Typography>Total Material: {totalMaterial.toFixed(2)}</Typography>
 
               <Typography variant="h6" fontWeight="bold" mt={4}>
                 Totals
               </Typography>
-              <Typography>Cost: {cost.toFixed(2)}</Typography>
+              <Typography>Cost: {baseCost.toFixed(2)}</Typography>
+              <TextField
+                label="Markup %"
+                type="number"
+                value={markup}
+                onChange={(e) => setMarkup(Number(e.target.value))}
+              />
+              <Typography>Markup Amount: {markupAmt.toFixed(2)}</Typography>
+              <TextField
+                label="Overhead %"
+                type="number"
+                value={overhead}
+                onChange={(e) => setOverhead(Number(e.target.value))}
+              />
+              <Typography>Overhead Amount: {overheadAmt.toFixed(2)}</Typography>
               <Typography>Warranty (3%): {warranty.toFixed(2)}</Typography>
               <TextField
                 label="ESA Inspection Fees"
