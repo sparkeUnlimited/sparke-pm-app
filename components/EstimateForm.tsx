@@ -158,12 +158,14 @@ const EstimateForm = () => {
   );
   const totalMaterial = materialSum;
 
+
   const baseCost = totalLabour + totalMaterial;
   const markupAmt = baseCost * (markup / 100);
   const overheadAmt = baseCost * (overhead / 100);
   const cost = baseCost + markupAmt + overheadAmt;
   const warranty = cost * 0.03;
   const subtotal = cost + warranty + esaFee + hydroFee;
+
 
   const discountAmt =
     discountType === "Dollar"
