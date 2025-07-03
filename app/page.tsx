@@ -7,10 +7,13 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
+import Nav from "@/components/Nav";
 
 const Home = () => {
   return (
-    <Paper sx={{ backgroundColor: "transparent", p: 4, mb: 4 }} elevation={3}>
+    <>
+      <Nav />
+      <Paper sx={{ backgroundColor: "transparent", p: 4, mb: 4 }} elevation={3}>
       <Typography
         variant="h2"
         align="center"
@@ -146,6 +149,7 @@ const Home = () => {
         </Typography>
       </Box>
     </Paper>
+    </>
   );
 };
 
