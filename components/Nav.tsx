@@ -54,7 +54,7 @@ export default function Nav() {
 
   const pageRoutes = {
     Home: "/",
-    Estimate: "/estimate",
+    Estimate: "https://estimate.sparkeunlimited.ca",
     Journal: "/journal",
     Tasks: "/tasks",
     "Look Ahead": "/lookahead",
