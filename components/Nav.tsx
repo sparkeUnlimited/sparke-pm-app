@@ -55,7 +55,7 @@ export default function Nav() {
 
   const pageRoutes = {
     Home: "/",
-    Estimate: "https://estimate.sparkeunlimited.ca",
+    Estimate: "https://estimating.sparkeunlimited.ca",
     Journal: "/journal",
     Tasks: "/tasks",
     "Look Ahead": "/lookahead",
@@ -141,9 +141,7 @@ export default function Nav() {
                     position: "relative",
                     overflow: "hidden",
                     pointerEvents:
-                      page === "Promotions" || pathname === pagePaths[page]
-                        ? "none"
-                        : "auto",
+                      page === "Promotions" || pathname === pagePaths[page] ? "none" : "auto",
                     opacity: page === "Promotions" ? 0.5 : 1,
                   }}
                   key={page}
@@ -187,9 +185,7 @@ export default function Nav() {
                   fontWeight: 800,
                   display: "flex",
                   pointerEvents:
-                    page === "Promotions" || pathname === pagePaths[page]
-                      ? "none"
-                      : "auto",
+                    page === "Promotions" || pathname === pagePaths[page] ? "none" : "auto",
                   background:
                     page === "Contact Us"
                       ? "linear-gradient(to right, #f59e0b, #ea580c, #fbbf24)"
