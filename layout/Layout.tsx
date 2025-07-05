@@ -2,6 +2,16 @@ import { Box, Container } from "@mui/material";
 import Head from "next/head";
 import Nav from "@/components/Nav"; // make sure this exists or replace with your nav
 import { ReactNode } from "react";
+/* import "/styles/globals.css";
+import "/styles/calendar.css";
+
+export const metadata = {
+  title: "Project Management App",
+  description:
+    "Delivering projects on time and within budget. Providing sustainable electrical services for residential and commercial customers.",
+  keywords:
+    "electrician, contractor, project management, EV chargers, panel upgrades, energy-efficient, fire alarm, commercial, residential",
+}; */
 
 type LayoutProps = {
   title?: string;
