@@ -5,7 +5,9 @@ import { Typography, Paper, Stack, Chip } from "@mui/material";
 const SyncStatusDashboard = () => {
   const [queueCount, setQueueCount] = useState(0);
   const [lastSync, setLastSync] = useState<string | null>(null);
-  const [online, setOnline] = useState(navigator.onLine);
+  const [online, setOnline] = useState(() =>
+    typeof navigator !== "undefined" ? navigator.onLine : false
+  );
 
   useEffect(() => {
     const update = async () => {
