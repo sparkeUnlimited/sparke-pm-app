@@ -9,3 +9,8 @@ export const sendEstimateEmail = async (data: any, pdf: Blob) => {
 export const ensureCustomerFolder = async (path: string) => {
   console.log("Ensuring folder exists:", path);
 };
+
+export const submitEHSForm = async (title: string, data: any) => {
+  console.log(`Submitting ${title} form to DynamoDB`, data);
+  // Placeholder for API call
+};
