@@ -1,0 +1,110 @@
+{
+  "title": "Internal Audit Checklist",
+  "description": "Checklist to verify compliance with COR certification elements during internal audits.",
+  "sections": [
+    {
+      "title": "Audit Criteria",
+      "fields": [
+        {
+          "label": "Health & Safety Policy visibly posted and communicated",
+          "type": "checkbox",
+          "options": [
+            "Yes",
+            "No",
+            "N/A"
+          ]
+        },
+        {
+          "label": "Roles and responsibilities defined and understood",
+          "type": "checkbox",
+          "options": [
+            "Yes",
+            "No",
+            "N/A"
+          ]
+        },
+        {
+          "label": "Hazard assessments completed and up-to-date",
+          "type": "checkbox",
+          "options": [
+            "Yes",
+            "No",
+            "N/A"
+          ]
+        },
+        {
+          "label": "Safe work procedures available and followed",
+          "type": "checkbox",
+          "options": [
+            "Yes",
+            "No",
+            "N/A"
+          ]
+        },
+        {
+          "label": "PPE available, in good condition, and being used",
+          "type": "checkbox",
+          "options": [
+            "Yes",
+            "No",
+            "N/A"
+          ]
+        },
+        {
+          "label": "Training records current and complete",
+          "type": "checkbox",
+          "options": [
+            "Yes",
+            "No",
+            "N/A"
+          ]
+        },
+        {
+          "label": "Incident reporting process in place and followed",
+          "type": "checkbox",
+          "options": [
+            "Yes",
+            "No",
+            "N/A"
+          ]
+        },
+        {
+          "label": "Emergency procedures are posted and drills conducted",
+          "type": "checkbox",
+          "options": [
+            "Yes",
+            "No",
+            "N/A"
+          ]
+        },
+        {
+          "label": "Workplace inspections documented and corrective actions tracked",
+          "type": "checkbox",
+          "options": [
+            "Yes",
+            "No",
+            "N/A"
+          ]
+        },
+        {
+          "label": "Subcontractors and visitors follow safety protocols",
+          "type": "checkbox",
+          "options": [
+            "Yes",
+            "No",
+            "N/A"
+          ]
+        },
+        {
+          "label": "Continuous improvement and management review practices evident",
+          "type": "checkbox",
+          "options": [
+            "Yes",
+            "No",
+            "N/A"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "title": "Modified Duty Log",
+  "description": "This log is used to track employee performance and compliance with assigned modified duties during the return-to-work period.",
+  "sections": [
+    {
+      "title": "1. Employee and Supervisor Information",
+      "fields": [
+        {
+          "label": "Employee Name",
+          "type": "text"
+        },
+        {
+          "label": "Job Title",
+          "type": "text"
+        },
+        {
+          "label": "Supervisor Name",
+          "type": "text"
+        },
+        {
+          "label": "Start Date of Modified Duty",
+          "type": "date"
+        },
+        {
+          "label": "Expected End Date",
+          "type": "date"
+        }
+      ]
+    },
+    {
+      "title": "2. Daily Duty Log",
+      "fields": [
+        {
+          "label": "Date",
+          "type": "date"
+        },
+        {
+          "label": "Modified Duties Performed",
+          "type": "textarea"
+        },
+        {
+          "label": "Compliance with Restrictions",
+          "type": "checkbox",
+          "options": [
+            "Yes",
+            "No"
+          ]
+        },
+        {
+          "label": "Supervisor Comments",
+          "type": "textarea"
+        },
+        {
+          "label": "Employee Initials",
+          "type": "text"
+        },
+        {
+          "label": "Supervisor Initials",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "title": "3. Weekly Review",
+      "fields": [
+        {
+          "label": "Review Date",
+          "type": "date"
+        },
+        {
+          "label": "Summary of Progress",
+          "type": "textarea"
+        },
+        {
+          "label": "Adjustments Needed",
+          "type": "textarea"
+        },
+        {
+          "label": "Next Review Date",
+          "type": "date"
+        },
+        {
+          "label": "Supervisor Signature",
+          "type": "signature"
+        },
+        {
+          "label": "Employee Signature",
+          "type": "signature"
+        }
+      ]
+    }
+  ]
+}

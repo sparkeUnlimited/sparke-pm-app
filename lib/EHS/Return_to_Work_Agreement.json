@@ -1,0 +1,116 @@
+{
+  "title": "Return to Work (RTW) Agreement",
+  "description": "This agreement outlines the temporary work accommodations for an employee returning to work following an injury or illness.",
+  "sections": [
+    {
+      "title": "1. Employee Information",
+      "fields": [
+        {
+          "label": "Name",
+          "type": "text"
+        },
+        {
+          "label": "Position",
+          "type": "text"
+        },
+        {
+          "label": "Date of Injury/Illness",
+          "type": "date"
+        },
+        {
+          "label": "Date of RTW",
+          "type": "date"
+        }
+      ]
+    },
+    {
+      "title": "2. Medical Clearance",
+      "fields": [
+        {
+          "label": "Physician Name",
+          "type": "text"
+        },
+        {
+          "label": "Functional Abilities Form Provided",
+          "type": "checkbox",
+          "options": [
+            "Yes",
+            "No"
+          ]
+        },
+        {
+          "label": "Medical Restrictions",
+          "type": "textarea"
+        }
+      ]
+    },
+    {
+      "title": "3. Modified Duties",
+      "fields": [
+        {
+          "label": "Temporary duties to be performed",
+          "type": "textarea"
+        },
+        {
+          "label": "Work Hours",
+          "type": "text"
+        },
+        {
+          "label": "Duration of Modifications",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "title": "4. Monitoring and Review",
+      "fields": [
+        {
+          "label": "Review Frequency",
+          "type": "checkbox",
+          "options": [
+            "Weekly",
+            "Bi-weekly",
+            "As Required"
+          ]
+        },
+        {
+          "label": "Next Review Date",
+          "type": "date"
+        },
+        {
+          "label": "Supervisor Responsible",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "title": "5. Agreement & Signatures",
+      "fields": [
+        {
+          "label": "Employee Signature",
+          "type": "signature"
+        },
+        {
+          "label": "Date (Employee)",
+          "type": "date"
+        },
+        {
+          "label": "Supervisor Signature",
+          "type": "signature"
+        },
+        {
+          "label": "Date (Supervisor)",
+          "type": "date"
+        },
+        {
+          "label": "Return to Work Coordinator",
+          "type": "signature"
+        },
+        {
+          "label": "Date (Coordinator)",
+          "type": "date"
+        }
+      ]
+    }
+  ]
+}

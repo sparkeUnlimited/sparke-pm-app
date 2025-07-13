@@ -1,0 +1,60 @@
+{
+  "title": "Corrective Action Register",
+  "description": "This register is used to track corrective actions resulting from incidents, inspections, audits, or safety observations.",
+  "sections": [
+    {
+      "title": "1. Corrective Action Entry",
+      "fields": [
+        {
+          "label": "Entry Date",
+          "type": "date"
+        },
+        {
+          "label": "Source (e.g., Incident, Inspection, Audit)",
+          "type": "text"
+        },
+        {
+          "label": "Description of Issue",
+          "type": "textarea"
+        },
+        {
+          "label": "Root Cause",
+          "type": "textarea"
+        },
+        {
+          "label": "Corrective Action Required",
+          "type": "textarea"
+        },
+        {
+          "label": "Person Responsible",
+          "type": "text"
+        },
+        {
+          "label": "Target Completion Date",
+          "type": "date"
+        },
+        {
+          "label": "Actual Completion Date",
+          "type": "date"
+        },
+        {
+          "label": "Verification Method",
+          "type": "text"
+        },
+        {
+          "label": "Verified By",
+          "type": "text"
+        },
+        {
+          "label": "Status",
+          "type": "dropdown",
+          "options": [
+            "Open",
+            "In Progress",
+            "Completed"
+          ]
+        }
+      ]
+    }
+  ]
+}

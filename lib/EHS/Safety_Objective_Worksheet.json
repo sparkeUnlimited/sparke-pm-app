@@ -1,0 +1,33 @@
+{
+  "title": "Safety Objective Worksheet",
+  "description": "Worksheet to document and track safety performance objectives over a defined timeline.",
+  "columns": [
+    "Objective",
+    "Metric",
+    "Baseline",
+    "Target",
+    "Timeline",
+    "Responsible",
+    "Progress Notes"
+  ],
+  "rows": [
+    {
+      "Objective": "Reduce lost-time injuries",
+      "Metric": "# of LTIs",
+      "Baseline": "2/year",
+      "Target": "0/year",
+      "Timeline": "12 months",
+      "Responsible": "R. Maxwell",
+      "Progress Notes": "Toolbox talks increased to weekly"
+    },
+    {
+      "Objective": "Increase training completion",
+      "Metric": "% of staff trained",
+      "Baseline": "70%",
+      "Target": "100%",
+      "Timeline": "6 months",
+      "Responsible": "J. Smith",
+      "Progress Notes": "Reminder system set up"
+    }
+  ]
+}

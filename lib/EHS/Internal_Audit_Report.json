@@ -1,0 +1,53 @@
+{
+  "title": "Internal Audit Report",
+  "description": "Report summarizing the findings and outcomes of an internal COR audit.",
+  "sections": [
+    {
+      "title": "1. Audit Information",
+      "fields": [
+        {
+          "label": "Audit Date",
+          "type": "date"
+        },
+        {
+          "label": "Auditor Name",
+          "type": "text"
+        },
+        {
+          "label": "Location/Department Audited",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "title": "2. Summary of Findings",
+      "fields": [
+        {
+          "label": "Areas Compliant",
+          "type": "textarea"
+        },
+        {
+          "label": "Areas of Concern",
+          "type": "textarea"
+        },
+        {
+          "label": "Corrective Actions Recommended",
+          "type": "textarea"
+        }
+      ]
+    },
+    {
+      "title": "3. Auditor Signature",
+      "fields": [
+        {
+          "label": "Auditor Signature",
+          "type": "signature"
+        },
+        {
+          "label": "Date",
+          "type": "date"
+        }
+      ]
+    }
+  ]
+}
