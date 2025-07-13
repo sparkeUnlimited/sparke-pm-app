@@ -24,12 +24,10 @@ export default function EHSPage() {
       <Typography variant="h4" gutterBottom>
         Employee Health and Safety
       </Typography>
-      <Typography paragraph>
-        Below are the available EHS forms. Select one to begin.
-      </Typography>
+      <Typography component="p">Below are the available EHS forms. Select one to begin.</Typography>
       <List>
         {forms.map((f) => (
-          <ListItem key={f.slug} component={Link} href={`/forms/${f.slug}`}> 
+          <ListItem key={f.slug} component={Link} href={`/forms/${f.slug}`}>
             <ListItemText primary={f.def.title} />
           </ListItem>
         ))}

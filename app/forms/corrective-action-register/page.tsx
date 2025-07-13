@@ -10,7 +10,7 @@ export default function Page() {
       <Typography variant="h4" gutterBottom>
         {formDefinition.title}
       </Typography>
-      <Typography paragraph>{formDefinition.description}</Typography>
+      <Typography component={"p"}>{formDefinition.description}</Typography>
       <CorrectiveActionRegisterForm />
     </Layout>
   );
