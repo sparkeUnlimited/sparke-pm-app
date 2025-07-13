@@ -1,6 +1,8 @@
+"use client";
+
 import { Box, Container } from "@mui/material";
 import Head from "next/head";
-import Nav from "@/components/Nav"; // make sure this exists or replace with your nav
+import Nav from "@/components/Nav";
 import { ReactNode } from "react";
 /* import "/styles/globals.css";
 import "/styles/calendar.css";
