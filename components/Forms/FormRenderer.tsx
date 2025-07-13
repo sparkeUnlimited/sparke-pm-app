@@ -13,6 +13,7 @@ import {
   Typography,
 } from "@mui/material";
 import { submitEHSForm } from "@/lib/api";
+import Layout from "@/layout/Layout";
 
 export type FormField = {
   label: string;
@@ -42,11 +43,18 @@ const FormRenderer = ({ definition }: { definition: FormDefinition }) => {
   };
 
   const renderField = (field: FormField, key: string) => {
-    const value = data[key] ?? (field.type === "checkbox" && field.options ? [] : field.type === "checkbox" ? false : "");
+    const value =
+      data[key] ??
+      (field.type === "checkbox" && field.options ? [] : field.type === "checkbox" ? false : "");
     switch (field.type) {
       case "text":
         return (
-          <TextField label={field.label} fullWidth value={value} onChange={(e) => handleChange(key, e.target.value)} />
+          <TextField
+            label={field.label}
+            fullWidth
+            value={value}
+            onChange={(e) => handleChange(key, e.target.value)}
+          />
         );
       case "textarea":
         return (
@@ -114,7 +122,9 @@ const FormRenderer = ({ definition }: { definition: FormDefinition }) => {
         }
         return (
           <FormControlLabel
-            control={<Checkbox checked={!!value} onChange={(e) => handleChange(key, e.target.checked)} />}
+            control={
+              <Checkbox checked={!!value} onChange={(e) => handleChange(key, e.target.checked)} />
+            }
             label={field.label}
           />
         );
@@ -130,7 +140,12 @@ const FormRenderer = ({ definition }: { definition: FormDefinition }) => {
         );
       default:
         return (
-          <TextField label={field.label} fullWidth value={value} onChange={(e) => handleChange(key, e.target.value)} />
+          <TextField
+            label={field.label}
+            fullWidth
+            value={value}
+            onChange={(e) => handleChange(key, e.target.value)}
+          />
         );
     }
   };

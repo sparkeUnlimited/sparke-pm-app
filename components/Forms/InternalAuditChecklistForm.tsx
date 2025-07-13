@@ -1,6 +1,6 @@
 "use client";
 import formDefinition from "@/lib/EHS/Internal_Audit_Checklist.json";
-import FormRenderer from "./FormRenderer";
+import FormRenderer from "@/components/Forms/FormRenderer";
 
 const InternalAuditChecklistForm = () => (
   <FormRenderer definition={formDefinition} />

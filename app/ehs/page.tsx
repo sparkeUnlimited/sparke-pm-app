@@ -1,6 +1,6 @@
 "use client";
 import Layout from "@/layout/Layout";
-import { List, ListItem, ListItemText, Typography } from "@mui/material";
+import { List, ListItem, ListItemText, Typography, Paper } from "@mui/material";
 import Link from "next/link";
 import CorrectiveActionRegister from "@/lib/EHS/Corrective_Action_Register.json";
 import InternalAuditChecklist from "@/lib/EHS/Internal_Audit_Checklist.json";
@@ -21,17 +21,21 @@ const forms = [
 export default function EHSPage() {
   return (
     <Layout title="Employee Health and Safety">
-      <Typography variant="h4" gutterBottom>
-        Employee Health and Safety
-      </Typography>
-      <Typography component="p">Below are the available EHS forms. Select one to begin.</Typography>
-      <List>
-        {forms.map((f) => (
-          <ListItem key={f.slug} component={Link} href={`/forms/${f.slug}`}>
-            <ListItemText primary={f.def.title} />
-          </ListItem>
-        ))}
-      </List>
+      <Paper sx={{ p: 4 }} elevation={4}>
+        <Typography variant="h4" gutterBottom>
+          Employee Health and Safety
+        </Typography>
+        <Typography component="p">
+          Below are the available EHS forms. Select one to begin.
+        </Typography>
+        <List>
+          {forms.map((f) => (
+            <ListItem key={f.slug} component={Link} href={`/forms/${f.slug}`}>
+              <ListItemText primary={f.def.title} />
+            </ListItem>
+          ))}
+        </List>
+      </Paper>
     </Layout>
   );
 }

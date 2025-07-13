@@ -1,6 +1,6 @@
 "use client";
 import raw from "@/lib/EHS/Safety_Objective_Worksheet.json";
-import FormRenderer, { FormDefinition } from "./FormRenderer";
+import FormRenderer, { FormDefinition } from "@/components/Forms/FormRenderer";
 
 const definition: FormDefinition = {
   title: raw.title,
