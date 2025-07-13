@@ -18,11 +18,11 @@ type LayoutProps = {
   children: ReactNode;
 };
 
-const Layout = ({ title = "Field Tool", children }: LayoutProps) => {
+const Layout = ({ title = "PM Tool", children }: LayoutProps) => {
   return (
     <>
       <Head>
-        <title>{`${title} | Spark-E Field Tool`}</title>
+        <title>{`${title} | PM Tool - Spark-E`}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
