@@ -1,0 +1,121 @@
+{
+  "EHSProgramAndPolicy": {
+    "1. Health & Safety Policy Statement": {
+      "Purpose": "Commitment to employee well-being, regulatory compliance, and environmental stewardship.",
+      "Policy": "Spark‑E Unlimited Electrical Inc. is committed to maintaining a workplace free of injuries, occupational illness, and environmental harm. We adhere to all federal and provincial regulations, including Ontario’s OHSA, BC’s Workers' Compensation Act, dynamic CSA standards, and Transportation of Dangerous Goods (TDG) regulations.",
+      "RolesAndResponsibilities": {
+        "Leadership": "Ensure policy awareness, resource provision, and continual improvement.",
+        "Supervisors": "Conduct hazard assessments, enforce procedures, and support training.",
+        "Workers": "Conduct job hazard assessments, follow procedures, complete training, and report hazards/near misses."
+      },
+      "LegalCompliance": "Compliance with Ontario Regulation 851, British Columbia OHS Regulation Part 19, CSA Z462 electrical safety, and TDG Regulations is mandatory."
+    },
+    "2. Safe Electrical Work Procedure": {
+      "Scope": "Live and de-energized electrical work.",
+      "Standards": [
+        "Conduct Job Hazard Analysis (JHA).",
+        "Utilize CSA Z462 and Z460 for lockout/tagout and arc flash control."
+      ],
+      "ControlMeasures": [
+        "Use LOTO for de-energization.",
+        "Use an Energized Work Permit if work occurs on live systems, with documented hazard controls.",
+        "Use arc-rated PPE and ensure CSA-approved electrical tools are inspected regularly or as required by the manufacturer."
+      ],
+      "Training": {
+        "AllWorkers": {
+          "Duration": "Approx 7.5 hours",
+          "Topics": [
+            "Ladder Safety",
+            "Personal Protective Equipment",
+            "Slips, Trips and Falls",
+            "Electrical Hazards",
+            "Manual Material Handling and Back Safety",
+            "Due Diligence",
+            "Young Worker Safety Orientation (Apprentices Only)",
+            "Handling Violence in the Workplace",
+            "Safe Driving [Canada] (If driving company vehicles)"
+          ]
+        },
+        "Supervisors": {
+          "AdditionalTraining": [
+            "Health & Safety for Managers & Supervisors in Canada",
+            "Construction Supervisor Awareness"
+          ],
+          "Duration": "Approx 10 hours"
+        }
+      }
+    },
+    "3. Lithium Battery Handling & Transport Procedure": {
+      "Scope": "Transport and management of lithium cells and batteries.",
+      "ClassificationAndDocumentation": [
+        "Identify proper UN numbers",
+        "Prepare shipping documents with UN number, proper shipping name, hazard class, size, emergency contacts, and overpack notation if applicable"
+      ],
+      "PackagingAndLabeling": [
+        "Use UN-certified containers for non-exempt batteries.",
+        "Apply Class 9 hazard labels, handling marks, and overpack labels.",
+        "Lithium batteries ≤20 Wh may meet SP 34 exemption; above 20 Wh up to 100 Wh need additional SP 34 handling."
+      ],
+      "TrainingAndResponse": {
+        "Requirements": [
+          "Workers must complete TDG lithium battery-specific training.",
+          "Enforce procedures to prevent short circuits (e.g., terminal isolation).",
+          "Refer to Transport Canada and PHMSA guidelines for damaged battery handling."
+        ]
+      },
+      "EmergencyResponse": {
+        "LithiumFires": "Do not use water; use Class D fire extinguisher or dry powder. Evacuate and notify authorities.",
+        "SpillsOrDamage": "Isolate, notify supervisor, and follow incident protocol."
+      }
+    },
+    "4. Incident Reporting & Investigation": {
+      "Procedures": [
+        "Promptly report incidents, near misses, and property/environmental harm.",
+        "Conduct investigations to identify root causes and corrective actions.",
+        "Maintain standardized forms and summary reviews during regular audits."
+      ]
+    },
+    "5. Emergency Response & Preparedness": {
+      "Plans": [
+        "Maintain accessible emergency plans, covering electrical incidents, fires (including lithium battery fires), spills, and evacuations.",
+        "Conduct annual drills.",
+        "Train in first aid and designate first aid stations per provincial requirements."
+      ]
+    },
+    "6. Environmental & Waste Management": {
+      "Policies": [
+        "Dispose of lithium batteries via approved recycling channels.",
+        "Prevent spills and manage chemical waste using spill kits.",
+        "Maintain control measures per provincial environmental legislation."
+      ]
+    },
+    "7. Training & Competency": {
+      "RequiredQualifications": [
+        "309A Red Seal or Apprenticeship",
+        "Certified in WHMIS, Working at Heights, TDG for lithium, first aid (min of 1 person)"
+      ],
+      "OrientationAndRefreshers": [
+        "New hires: complete orientation and review Safe Work Procedures (SWP).",
+        "Annual refreshers: WHMIS, Working at Heights, emergency response.",
+        "TDG training every 3 years"
+      ],
+      "CompetencyAssessments": "Conduct practical audits and training refreshers as required by law or regulation."
+    },
+    "8. Inspections, Audits & Continuous Improvement": {
+      "Requirements": [
+        "Perform daily jobsite inspections.",
+        "Annual internal audits and third-party electrical safety compliance checks.",
+        "Quarterly management reviews of incidents, audits, and improvement actions."
+      ]
+    },
+    "RecordKeepingChecklist": {
+      "TrainingCertificates": "5 years",
+      "JobHazardAnalyses": "3 years",
+      "ElectricalAndBatteryTransportSWPs": "5 years",
+      "IncidentReportsAndInvestigations": "7 years",
+      "InspectionAndAuditReports": "5 years",
+      "EmergencyDrillLogs": "5 years",
+      "WasteAndDisposalRecords": "5 years or per regulation"
+    }
+  }
+}

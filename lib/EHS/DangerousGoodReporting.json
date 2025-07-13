@@ -1,0 +1,74 @@
+{
+  "DangerousGoodsIncidentReport": {
+    "Instructions": {
+      "ImmediateAction": "Make an emergency phone report to CANUTEC and any required local authorities if the event exceeds the prescribed thresholds.",
+      "CompleteForm": "Fill out sections 1–5 as soon as practical after detecting the release or anticipated release.",
+      "DetailedReporting": "Submit a written TDG release or anticipated release report including all completed sections.",
+      "FollowUp": "Within 30 days, file the 30‑Day Written Report (Form TP16‑0086 or equivalent) to the TDG Directorate.",
+      "InternalReview": "Conduct a formal investigation, implement corrective actions, and update policies and training accordingly.",
+      "RecordRetention": "Keep all documents, reports, and supporting materials for the duration defined in the EHS Program and Policy document."
+    },
+    "1_ReporterInformation": {
+      "Name": "",
+      "TitleOrRole": "",
+      "Company": "",
+      "PhoneNumber24h": "",
+      "EmailAddress": "",
+      "DateTimeOfReport": ""
+    },
+    "2_IncidentOverview": {
+      "EventType": ["Release", "Anticipated Release"],
+      "DateTimeOfEvent": "",
+      "GeographicLocation": "",
+      "ModeOfTransport": ["Road", "Rail", "Marine", "Air"]
+    },
+    "3_DangerousGoodsDetails": {
+      "UNNumberAndShippingName": "",
+      "QuantityBeforeIncident": "",
+      "EstimatedQuantityReleased": "",
+      "MeansOfContainment": ""
+    },
+    "4_IncidentCause": [
+      "Collision",
+      "Rollover",
+      "Derailment",
+      "Overfill",
+      "Fire",
+      "Explosion",
+      "Load-shift",
+      "Other"
+    ],
+    "5_IncidentConsequencesAndEmergencyResponse": {
+      "TransportClosure": {
+        "Closed": false,
+        "NameAndLocation": ""
+      },
+      "EvacuatedOrSheltered": 0,
+      "Deaths": 0,
+      "Injured": 0,
+      "EmergencyActionsTaken": {
+        "CalledCANUTEC": false,
+        "NotifiedLocalFireOrPolice": false,
+        "SpillContainmentInitiated": false,
+        "ContainerPatchedOrSecured": false
+      }
+    },
+    "6_FollowUpActions": {
+      "30DayReportFiled": false,
+      "IncidentInvestigated": false,
+      "ContainerAction": false,
+      "EmergencyTeamDebriefed": false,
+      "TrainingUpdated": false,
+      "RecordsUpdated": false
+    },
+    "7_AttachmentsAndSupportingDocumentation": {
+      "IncidentPhotos": false,
+      "InspectionChecklists": false,
+      "WitnessStatements": false,
+      "CANUTECCaseNumber": "",
+      "30DayReportReference": ""
+    },
+    "Revision": "1",
+    "Date": "June 2025"
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "30DayIncidentFollowUpReport": {
+    "1_ReportAuthor": {
+      "Name": "",
+      "TitleOrRole": "",
+      "Company": "",
+      "Phone24Hour": "",
+      "Email": ""
+    },
+    "2_ConsignorConsigneeCarrier": {
+      "Consignor": "",
+      "Consignee": "",
+      "Carrier": ""
+    },
+    "3_IncidentSummary": {
+      "EventType": ["Release", "Anticipated Release"],
+      "DateTime": "",
+      "Location": "",
+      "ModeOfTransport": ["Road", "Rail", "Marine", "Air"]
+    },
+    "4_DangerousGoodsDetails": {
+      "Classification": "",
+      "UNNumberAndShippingName": "",
+      "QuantityBeforeIncident": "",
+      "QuantityReleased": ""
+    },
+    "5_ContainmentAndDamage": {
+      "MeansOfContainment": "",
+      "DamageOrFailureNoted": false,
+      "DamageDescription": ""
+    },
+    "6_SequenceOfEvents": {
+      "Description": "",
+      "ExplosionOrFire": false,
+      "ExplosionOrFireDetails": ""
+    },
+    "7_FacilityInfrastructureImpact": {
+      "FacilityClosed": false,
+      "FacilityDetails": "",
+      "TransportClosure": false,
+      "TransportClosureDetails": ""
+    },
+    "8_PublicSafetyImpact": {
+      "NumberEvacuatedOrSheltered": 0,
+      "Duration": "",
+      "InjuriesOrFatalities": {
+        "Deaths": 0,
+        "Injuries": 0
+      }
+    },
+    "9_ERAP": {
+      "ERAPReferenceNumber": "",
+      "PersonWithERAP": "",
+      "DateTimeReported": ""
+    },
+    "10_ReportingTimeline": {
+      "DateOriginalReport": "",
+      "Date30DayReport": ""
+    },
+    "11_FinancialEnvironmentalCosts": {
+      "EstimatedFinancialLoss": 0,
+      "EmergencyResponseCosts": 0,
+      "RemediationCleanupCosts": 0
+    },
+    "12_RouteAndJeopardyAssessment": {
+      "RouteDescription": "",
+      "SeriousJeopardy": false,
+      "JeopardyDetails": "",
+      "DamageToPropertyOrEnvironment": ""
+    },
+    "13_UpdatesAndRetention": {
+      "UpdateRequirements": "Notify Director General of changes to sections 6, 9, 10, 11, 12, 16, or 19 within one year.",
+      "RetentionRequirement": "Retain for at least 2 years and provide within 15 days of written request."
+    },
+    "SubmissionInstructions": {
+      "SubmissionMethod": "Email",
+      "Recipient": "Transportation of Dangerous Goods Directorate, Transport Canada, Ottawa, ON",
+      "Email": "dor-rcd@tc.gc.ca",
+      "Deadline": "Within 30 days of original report"
+    },
+    "AttachmentsChecklist": [
+      "CANUTEC case number(s)",
+      "Copy of original emergency report",
+      "Investigation findings",
+      "Photos & diagrams",
+      "Witness statements",
+      "Cost estimates and invoices"
+    ]
+  }
+}
