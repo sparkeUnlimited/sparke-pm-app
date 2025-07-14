@@ -30,12 +30,12 @@ export default function EHSPage() {
   
 
       <Paper sx={{ p: 4 }} elevation={4}>
-        <Typography variant="h4" gutterBottom>
+      {/*   <Typography variant="h4" gutterBottom>
           Employee Health and Safety
         </Typography>
         <Typography component="p">
           Below are the available EHS forms. Select one to begin.
-        </Typography>
+        </Typography> */}
         <List>
           {forms.map((f) => (
             <ListItem key={f.slug} component={Link} href={`/forms/${f.slug}`}>

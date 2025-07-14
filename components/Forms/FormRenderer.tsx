@@ -4,6 +4,7 @@ import {
   Box,
   Button,
   Checkbox,
+  Radio,
   FormControl,
   FormControlLabel,
   FormGroup,
@@ -49,6 +50,25 @@ const renderFieldControl = (
   update: (val: Partial<RowData>) => void,
 ) => {
   switch (field.type) {
+    case "radio":
+      return (
+        <FormGroup>
+          {field.options?.map((opt) => (
+            <FormControlLabel
+              key={opt}
+              control={
+                <Radio
+                  checked={row.value === opt}
+                  onChange={() => update({ value: opt })}
+                  value={opt}
+                  name={`radio-${row.fieldKey}`} // ensures radios are grouped
+                />
+              }
+              label={opt}
+            />
+          ))}
+        </FormGroup>
+      );
     case "checkbox":
       return (
         <FormGroup>
@@ -168,16 +188,9 @@ const FormRenderer = ({ definition }: { definition: FormDefinition }) => {
   };
 
   return (
-    <Layout title={definition.title}>
-      <Paper sx={{ p: 4 }} elevation={4}>
-        <Typography variant="h4" gutterBottom>
-          {definition.title}
-        </Typography>
-        {definition.description && (
-          <Typography component="p" sx={{ mb: 3 }}>
-            {definition.description}
-          </Typography>
-        )}
+   /*  <Layout title={definition.title}>*/
+      <Paper sx={{ p: 4 }} elevation={2}> 
+      
         {definition.sections.map((section) => (
           <Box key={section.title} mb={4}>
             <Typography variant="h6" fontWeight="bold" gutterBottom>
@@ -186,7 +199,7 @@ const FormRenderer = ({ definition }: { definition: FormDefinition }) => {
             <Table size="small">
               <TableHead>
                 <TableRow>
-                  <TableCell>Field</TableCell>
+                  <TableCell>Inpection Item</TableCell>
                   <TableCell>Value</TableCell>
                   <TableCell />
                 </TableRow>
@@ -246,8 +259,8 @@ const FormRenderer = ({ definition }: { definition: FormDefinition }) => {
           Submit Form
         </Button>
       </Paper>
-    </Layout>
-  );
+    /* </Layout>*/
+  ); 
 };
 
 export default FormRenderer;

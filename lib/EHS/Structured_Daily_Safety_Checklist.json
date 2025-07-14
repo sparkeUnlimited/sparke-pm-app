@@ -1,63 +1,39 @@
 {
   "title": "Daily Construction Site Safety Checklist",
-  "description": "A structured checklist to assess and document daily site safety compliance on a construction site.",
+  "description": "A structured checklist to assess and document daily site safety compliance.",
   "sections": [
     {
       "title": "General Site Conditions",
       "fields": [
         {
           "label": "Site perimeter fencing secure and intact",
-          "type": "checkbox",
-          "options": [
-            "Yes",
-            "No",
-            "N/A"
-          ]
+          "type": "radio",
+          "options": ["Yes", "No", "N/A"]
         },
         {
           "label": "Clear signage (safety, hazards, PPE requirements)",
-          "type": "checkbox",
-          "options": [
-            "Yes",
-            "No",
-            "N/A"
-          ]
+          "type": "radio",
+          "options": ["Yes", "No", "N/A"]
         },
         {
           "label": "Emergency exits and evacuation routes clearly marked",
-          "type": "checkbox",
-          "options": [
-            "Yes",
-            "No",
-            "N/A"
-          ]
+          "type": "radio",
+          "options": ["Yes", "No", "N/A"]
         },
         {
           "label": "Site clean and free of debris or obstructions",
-          "type": "checkbox",
-          "options": [
-            "Yes",
-            "No",
-            "N/A"
-          ]
+          "type": "radio",
+          "options": ["Yes", "No", "N/A"]
         },
         {
           "label": "Adequate lighting for work being performed",
-          "type": "checkbox",
-          "options": [
-            "Yes",
-            "No",
-            "N/A"
-          ]
+          "type": "radio",
+          "options": ["Yes", "No", "N/A"]
         },
         {
           "label": "No evidence of unauthorized entry or vandalism",
-          "type": "checkbox",
-          "options": [
-            "Yes",
-            "No",
-            "N/A"
-          ]
+          "type": "radio",
+          "options": ["Yes", "No", "N/A"]
         }
       ]
     },
@@ -66,57 +42,33 @@
       "fields": [
         {
           "label": "Hard hats being worn by all workers",
-          "type": "checkbox",
-          "options": [
-            "Yes",
-            "No",
-            "N/A"
-          ]
+          "type": "radio",
+          "options": ["Yes", "No", "N/A"]
         },
         {
           "label": "High-visibility clothing worn and clean",
-          "type": "checkbox",
-          "options": [
-            "Yes",
-            "No",
-            "N/A"
-          ]
+          "type": "radio",
+          "options": ["Yes", "No", "N/A"]
         },
         {
           "label": "CSA-approved safety boots in good condition",
-          "type": "checkbox",
-          "options": [
-            "Yes",
-            "No",
-            "N/A"
-          ]
+          "type": "radio",
+          "options": ["Yes", "No", "N/A"]
         },
         {
           "label": "Eye and hearing protection used where required",
-          "type": "checkbox",
-          "options": [
-            "Yes",
-            "No",
-            "N/A"
-          ]
+          "type": "radio",
+          "options": ["Yes", "No", "N/A"]
         },
         {
           "label": "Respirators or masks used properly (if applicable)",
-          "type": "checkbox",
-          "options": [
-            "Yes",
-            "No",
-            "N/A"
-          ]
+          "type": "radio",
+          "options": ["Yes", "No", "N/A"]
         },
         {
           "label": "Arc flash or specialized PPE available and worn (if needed)",
-          "type": "checkbox",
-          "options": [
-            "Yes",
-            "No",
-            "N/A"
-          ]
+          "type": "radio",
+          "options": ["Yes", "No", "N/A"]
         }
       ]
     },
@@ -125,48 +77,28 @@
       "fields": [
         {
           "label": "Guardrails installed where required",
-          "type": "checkbox",
-          "options": [
-            "Yes",
-            "No",
-            "N/A"
-          ]
+          "type": "radio",
+          "options": ["Yes", "No", "N/A"]
         },
         {
           "label": "Fall arrest systems available and inspected",
-          "type": "checkbox",
-          "options": [
-            "Yes",
-            "No",
-            "N/A"
-          ]
+          "type": "radio",
+          "options": ["Yes", "No", "N/A"]
         },
         {
           "label": "Workers using proper anchor points",
-          "type": "checkbox",
-          "options": [
-            "Yes",
-            "No",
-            "N/A"
-          ]
+          "type": "radio",
+          "options": ["Yes", "No", "N/A"]
         },
         {
           "label": "Harnesses and lanyards in good condition",
-          "type": "checkbox",
-          "options": [
-            "Yes",
-            "No",
-            "N/A"
-          ]
+          "type": "radio",
+          "options": ["Yes", "No", "N/A"]
         },
         {
           "label": "Ladders and scaffolds stable, inspected, and properly used",
-          "type": "checkbox",
-          "options": [
-            "Yes",
-            "No",
-            "N/A"
-          ]
+          "type": "radio",
+          "options": ["Yes", "No", "N/A"]
         }
       ]
     },
@@ -175,66 +107,38 @@
       "fields": [
         {
           "label": "Tools in good condition and stored properly",
-          "type": "checkbox",
-          "options": [
-            "Yes",
-            "No",
-            "N/A"
-          ]
+          "type": "radio",
+          "options": ["Yes", "No", "N/A"]
         },
         {
           "label": "Power tools grounded or double insulated",
-          "type": "checkbox",
-          "options": [
-            "Yes",
-            "No",
-            "N/A"
-          ]
+          "type": "radio",
+          "options": ["Yes", "No", "N/A"]
         },
         {
           "label": "Equipment operators certified and authorized",
-          "type": "checkbox",
-          "options": [
-            "Yes",
-            "No",
-            "N/A"
-          ]
+          "type": "radio",
+          "options": ["Yes", "No", "N/A"]
         },
         {
           "label": "Equipment inspections done and logged",
-          "type": "checkbox",
-          "options": [
-            "Yes",
-            "No",
-            "N/A"
-          ]
+          "type": "radio",
+          "options": ["Yes", "No", "N/A"]
         },
         {
           "label": "Machinery guarding in place",
-          "type": "checkbox",
-          "options": [
-            "Yes",
-            "No",
-            "N/A"
-          ]
+          "type": "radio",
+          "options": ["Yes", "No", "N/A"]
         },
         {
           "label": "Extension cords not frayed or pinched",
-          "type": "checkbox",
-          "options": [
-            "Yes",
-            "No",
-            "N/A"
-          ]
+          "type": "radio",
+          "options": ["Yes", "No", "N/A"]
         },
         {
           "label": "Lockout/tagout procedures followed (if applicable)",
-          "type": "checkbox",
-          "options": [
-            "Yes",
-            "No",
-            "N/A"
-          ]
+          "type": "radio",
+          "options": ["Yes", "No", "N/A"]
         }
       ]
     },
@@ -243,48 +147,28 @@
       "fields": [
         {
           "label": "Temporary panels locked and labeled",
-          "type": "checkbox",
-          "options": [
-            "Yes",
-            "No",
-            "N/A"
-          ]
+          "type": "radio",
+          "options": ["Yes", "No", "N/A"]
         },
         {
           "label": "GFCIs used on all temporary power circuits",
-          "type": "checkbox",
-          "options": [
-            "Yes",
-            "No",
-            "N/A"
-          ]
+          "type": "radio",
+          "options": ["Yes", "No", "N/A"]
         },
         {
           "label": "No exposed wiring or tripping hazards",
-          "type": "checkbox",
-          "options": [
-            "Yes",
-            "No",
-            "N/A"
-          ]
+          "type": "radio",
+          "options": ["Yes", "No", "N/A"]
         },
         {
           "label": "Cord management in place (e.g., raised, covered)",
-          "type": "checkbox",
-          "options": [
-            "Yes",
-            "No",
-            "N/A"
-          ]
+          "type": "radio",
+          "options": ["Yes", "No", "N/A"]
         },
         {
           "label": "Clearances maintained from overhead lines",
-          "type": "checkbox",
-          "options": [
-            "Yes",
-            "No",
-            "N/A"
-          ]
+          "type": "radio",
+          "options": ["Yes", "No", "N/A"]
         }
       ]
     },
@@ -293,48 +177,28 @@
       "fields": [
         {
           "label": "Walkways and stairways clear",
-          "type": "checkbox",
-          "options": [
-            "Yes",
-            "No",
-            "N/A"
-          ]
+          "type": "radio",
+          "options": ["Yes", "No", "N/A"]
         },
         {
           "label": "Materials stacked/stored safely",
-          "type": "checkbox",
-          "options": [
-            "Yes",
-            "No",
-            "N/A"
-          ]
+          "type": "radio",
+          "options": ["Yes", "No", "N/A"]
         },
         {
           "label": "Waste disposed of in bins or designated areas",
-          "type": "checkbox",
-          "options": [
-            "Yes",
-            "No",
-            "N/A"
-          ]
+          "type": "radio",
+          "options": ["Yes", "No", "N/A"]
         },
         {
           "label": "Dust control in place (e.g., sweeping, water spray)",
-          "type": "checkbox",
-          "options": [
-            "Yes",
-            "No",
-            "N/A"
-          ]
+          "type": "radio",
+          "options": ["Yes", "No", "N/A"]
         },
         {
           "label": "No slip, trip, or fall hazards present",
-          "type": "checkbox",
-          "options": [
-            "Yes",
-            "No",
-            "N/A"
-          ]
+          "type": "radio",
+          "options": ["Yes", "No", "N/A"]
         }
       ]
     },
@@ -343,48 +207,28 @@
       "fields": [
         {
           "label": "First aid kit stocked and accessible",
-          "type": "checkbox",
-          "options": [
-            "Yes",
-            "No",
-            "N/A"
-          ]
+          "type": "radio",
+          "options": ["Yes", "No", "N/A"]
         },
         {
           "label": "Emergency contact list posted",
-          "type": "checkbox",
-          "options": [
-            "Yes",
-            "No",
-            "N/A"
-          ]
+          "type": "radio",
+          "options": ["Yes", "No", "N/A"]
         },
         {
           "label": "Fire extinguishers inspected and accessible",
-          "type": "checkbox",
-          "options": [
-            "Yes",
-            "No",
-            "N/A"
-          ]
+          "type": "radio",
+          "options": ["Yes", "No", "N/A"]
         },
         {
           "label": "Spill kits available and complete",
-          "type": "checkbox",
-          "options": [
-            "Yes",
-            "No",
-            "N/A"
-          ]
+          "type": "radio",
+          "options": ["Yes", "No", "N/A"]
         },
         {
           "label": "Communication device (phone/radio) charged and ready",
-          "type": "checkbox",
-          "options": [
-            "Yes",
-            "No",
-            "N/A"
-          ]
+          "type": "radio",
+          "options": ["Yes", "No", "N/A"]
         }
       ]
     },
@@ -393,39 +237,23 @@
       "fields": [
         {
           "label": "Weather conditions monitored and recorded",
-          "type": "checkbox",
-          "options": [
-            "Yes",
-            "No",
-            "N/A"
-          ]
+          "type": "radio",
+          "options": ["Yes", "No", "N/A"]
         },
         {
           "label": "Heat/cold stress mitigation in place (hydration, breaks, warm-up)",
-          "type": "checkbox",
-          "options": [
-            "Yes",
-            "No",
-            "N/A"
-          ]
+          "type": "radio",
+          "options": ["Yes", "No", "N/A"]
         },
         {
           "label": "Wind considerations for overhead/lift work",
-          "type": "checkbox",
-          "options": [
-            "Yes",
-            "No",
-            "N/A"
-          ]
+          "type": "radio",
+          "options": ["Yes", "No", "N/A"]
         },
         {
           "label": "Adequate shelter or shade for breaks",
-          "type": "checkbox",
-          "options": [
-            "Yes",
-            "No",
-            "N/A"
-          ]
+          "type": "radio",
+          "options": ["Yes", "No", "N/A"]
         }
       ]
     },
@@ -434,39 +262,23 @@
       "fields": [
         {
           "label": "All workers signed in and oriented",
-          "type": "checkbox",
-          "options": [
-            "Yes",
-            "No",
-            "N/A"
-          ]
+          "type": "radio",
+          "options": ["Yes", "No", "N/A"]
         },
         {
           "label": "Toolbox talk completed and documented",
-          "type": "checkbox",
-          "options": [
-            "Yes",
-            "No",
-            "N/A"
-          ]
+          "type": "radio",
+          "options": ["Yes", "No", "N/A"]
         },
         {
           "label": "JHAs reviewed for all tasks",
-          "type": "checkbox",
-          "options": [
-            "Yes",
-            "No",
-            "N/A"
-          ]
+          "type": "radio",
+          "options": ["Yes", "No", "N/A"]
         },
         {
           "label": "Safety concerns reported and addressed",
-          "type": "checkbox",
-          "options": [
-            "Yes",
-            "No",
-            "N/A"
-          ]
+          "type": "radio",
+          "options": ["Yes", "No", "N/A"]
         }
       ]
     },
@@ -475,39 +287,23 @@
       "fields": [
         {
           "label": "Subcontractors following site safety rules",
-          "type": "checkbox",
-          "options": [
-            "Yes",
-            "No",
-            "N/A"
-          ]
+          "type": "radio",
+          "options": ["Yes", "No", "N/A"]
         },
         {
           "label": "Proof of insurance and safety certifications available",
-          "type": "checkbox",
-          "options": [
-            "Yes",
-            "No",
-            "N/A"
-          ]
+          "type": "radio",
+          "options": ["Yes", "No", "N/A"]
         },
         {
           "label": "Subcontractors signed in/out properly",
-          "type": "checkbox",
-          "options": [
-            "Yes",
-            "No",
-            "N/A"
-          ]
+          "type": "radio",
+          "options": ["Yes", "No", "N/A"]
         },
         {
           "label": "Dedicated safety reps available (if required)",
-          "type": "checkbox",
-          "options": [
-            "Yes",
-            "No",
-            "N/A"
-          ]
+          "type": "radio",
+          "options": ["Yes", "No", "N/A"]
         }
       ]
     }
