@@ -23,16 +23,23 @@ import { useRouter } from "next/navigation";
 import WorkIcon from "@mui/icons-material/Work";
 import AssignmentIcon from "@mui/icons-material/Assignment";
 import SafetyCheckIcon from "@mui/icons-material/HealthAndSafety";
+import DescriptionIcon from "@mui/icons-material/Description";
 import BuildIcon from "@mui/icons-material/Build";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import NotesIcon from "@mui/icons-material/StickyNote2";
+import CorrectiveActionRegister from "@/lib/EHS/Corrective_Action_Register.json";
+import InternalAuditChecklist from "@/lib/EHS/Internal_Audit_Checklist.json";
+import InternalAuditReport from "@/lib/EHS/Internal_Audit_Report.json";
+import ModifiedDutyLog from "@/lib/EHS/Modified_Duty_Log.json";
+import ReturnToWorkAgreement from "@/lib/EHS/Return_to_Work_Agreement.json";
+import SafetyObjectiveWorksheet from "@/lib/EHS/Safety_Objective_Worksheet.json";
 
 const basePages = [
   "Estimate",
   "Journal",
   "Tasks",
   "Look Ahead",
-  "Safety",
+  "EHS",
   "Tools",
   "Dashboard",
 ] as const;
@@ -42,10 +49,19 @@ const pageIcons = {
   Journal: <NotesIcon fontSize="large" />,
   Tasks: <AssignmentIcon fontSize="large" />,
   "Look Ahead": <WorkIcon fontSize="large" />,
-  Safety: <SafetyCheckIcon fontSize="large" />,
+  EHS: <SafetyCheckIcon fontSize="large" />,
   Tools: <BuildIcon fontSize="large" />,
   Dashboard: <DashboardIcon fontSize="large" />,
 };
+
+const formLinks = [
+  { title: CorrectiveActionRegister.title, slug: "corrective-action-register" },
+  { title: InternalAuditChecklist.title, slug: "internal-audit-checklist" },
+  { title: InternalAuditReport.title, slug: "internal-audit-report" },
+  { title: ModifiedDutyLog.title, slug: "modified-duty-log" },
+  { title: ReturnToWorkAgreement.title, slug: "return-to-work-agreement" },
+  { title: SafetyObjectiveWorksheet.title, slug: "safety-objective-worksheet" },
+];
 
 export default function Nav() {
   const router = useRouter();
@@ -58,19 +74,28 @@ export default function Nav() {
     Journal: "/journal",
     Tasks: "/tasks",
     "Look Ahead": "/lookahead",
-    Safety: "/safety",
+    EHS: "/ehs",
     Tools: "/tools",
     Dashboard: "/dashboard",
   };
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
+  const [anchorElForms, setAnchorElForms] = React.useState<null | HTMLElement>(null);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
 
+  const handleOpenFormsMenu = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorElForms(event.currentTarget);
+  };
+
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
+  };
+
+  const handleCloseFormsMenu = () => {
+    setAnchorElForms(null);
   };
 
   return (
@@ -141,6 +166,18 @@ export default function Nav() {
                   <Typography sx={{ textAlign: "center", marginLeft: 1 }}>{page}</Typography>
                 </MenuItem>
               ))}
+              {formLinks.map((form) => (
+                <MenuItem
+                  key={form.slug}
+                  onClick={() => {
+                    handleCloseNavMenu();
+                    router.push(`/forms/${form.slug}`);
+                  }}
+                >
+                  <DescriptionIcon sx={{ mr: 1 }} />
+                  <Typography>{form.title}</Typography>
+                </MenuItem>
+              ))}
             </Menu>
           </Box>
 
@@ -187,6 +224,30 @@ export default function Nav() {
                 {page}
               </Button>
             ))}
+            <Button
+              onClick={handleOpenFormsMenu}
+              sx={{ my: 3, color: "white", fontWeight: 800 }}
+              startIcon={<DescriptionIcon />}
+            >
+              Forms
+            </Button>
+            <Menu
+              anchorEl={anchorElForms}
+              open={Boolean(anchorElForms)}
+              onClose={handleCloseFormsMenu}
+            >
+              {formLinks.map((form) => (
+                <MenuItem
+                  key={form.slug}
+                  onClick={() => {
+                    handleCloseFormsMenu();
+                    router.push(`/forms/${form.slug}`);
+                  }}
+                >
+                  {form.title}
+                </MenuItem>
+              ))}
+            </Menu>
           </Box>
         </Toolbar>
       </Container>

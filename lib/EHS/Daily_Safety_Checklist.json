@@ -1,0 +1,107 @@
+{
+  "title": "Daily Construction Site Safety Checklist",
+  "description": "A daily checklist to ensure safety compliance, hazard control, and site readiness on a construction site.",
+  "sections": [
+    {
+      "title": "General Site Conditions",
+      "items": [
+        "Site perimeter fencing secure and intact",
+        "Clear signage (safety, hazards, PPE requirements)",
+        "Emergency exits and evacuation routes clearly marked",
+        "Site clean and free of debris or obstructions",
+        "Adequate lighting for work being performed",
+        "No evidence of unauthorized entry or vandalism"
+      ]
+    },
+    {
+      "title": "Worker PPE Compliance",
+      "items": [
+        "Hard hats being worn by all workers",
+        "High-visibility clothing worn and clean",
+        "CSA-approved safety boots in good condition",
+        "Eye and hearing protection used where required",
+        "Respirators or masks used properly (if applicable)",
+        "Arc flash or specialized PPE available and worn (if needed)"
+      ]
+    },
+    {
+      "title": "Fall Protection",
+      "items": [
+        "Guardrails installed where required",
+        "Fall arrest systems available and inspected",
+        "Workers using proper anchor points",
+        "Harnesses and lanyards in good condition",
+        "Ladders and scaffolds stable, inspected, and properly used"
+      ]
+    },
+    {
+      "title": "Tools & Equipment",
+      "items": [
+        "Tools in good condition and stored properly",
+        "Power tools grounded or double insulated",
+        "Equipment operators certified and authorized",
+        "Equipment inspections done and logged",
+        "Machinery guarding in place",
+        "Extension cords not frayed or pinched",
+        "Lockout/tagout procedures followed (if applicable)"
+      ]
+    },
+    {
+      "title": "Electrical Safety",
+      "items": [
+        "Temporary panels locked and labeled",
+        "GFCIs used on all temporary power circuits",
+        "No exposed wiring or tripping hazards",
+        "Cord management in place (e.g., raised, covered)",
+        "Clearances maintained from overhead lines"
+      ]
+    },
+    {
+      "title": "Housekeeping & Waste Management",
+      "items": [
+        "Walkways and stairways clear",
+        "Materials stacked/stored safely",
+        "Waste disposed of in bins or designated areas",
+        "Dust control in place (e.g., sweeping, water spray)",
+        "No slip, trip, or fall hazards present"
+      ]
+    },
+    {
+      "title": "First Aid & Emergency Preparedness",
+      "items": [
+        "First aid kit stocked and accessible",
+        "Emergency contact list posted",
+        "Fire extinguishers inspected and accessible",
+        "Spill kits available and complete",
+        "Communication device (phone/radio) charged and ready"
+      ]
+    },
+    {
+      "title": "Environmental Conditions",
+      "items": [
+        "Weather conditions monitored and recorded",
+        "Heat/cold stress mitigation in place (hydration, breaks, warm-up)",
+        "Wind considerations for overhead/lift work",
+        "Adequate shelter or shade for breaks"
+      ]
+    },
+    {
+      "title": "Worker Orientation & Communication",
+      "items": [
+        "All workers signed in and oriented",
+        "Toolbox talk completed and documented",
+        "JHAs reviewed for all tasks",
+        "Safety concerns reported and addressed"
+      ]
+    },
+    {
+      "title": "Subcontractor Compliance",
+      "items": [
+        "Subcontractors following site safety rules",
+        "Proof of insurance and safety certifications available",
+        "Subcontractors signed in/out properly",
+        "Dedicated safety reps available (if required)"
+      ]
+    }
+  ]
+}
