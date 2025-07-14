@@ -1,19 +1,12 @@
 "use client";
 import Layout from "@/layout/Layout";
-import formDefinition from "@/lib/EHS/Internal_Audit_Checklist.json";
-import InternalAuditChecklistForm from "@/components/Forms/InternalAuditChecklistForm";
-import { Typography, Paper } from "@mui/material";
+import FormRenderer from "@/components/FormRenderer";
+import formJson from "@/lib/EHS/Internal_Audit_Checklist.json";
 
-export default function Page() {
+export default function InternalAuditChecklistPage() {
   return (
-    <Layout title={formDefinition.title}>
-      <Paper sx={{ p: 4, mb: 3 }} elevation={4}>
-        <Typography variant="h4" gutterBottom>
-          {formDefinition.title}
-        </Typography>
-        <Typography component="p">{formDefinition.description}</Typography>
-        <InternalAuditChecklistForm />
-      </Paper>
+    <Layout title="Internal Audit Checklist">
+      <FormRenderer formJson={formJson} />
     </Layout>
   );
 }
