@@ -1,0 +1,142 @@
+{
+  "title": "Construction Site Equipment Inspection Checklist",
+  "description": "Checklist for inspecting personal protective equipment, tools, and machinery used on a construction site.",
+  "sections": [
+    {
+      "title": "Personal Protective Equipment (PPE)",
+      "fields": [
+        {
+          "label": "Hard hats",
+          "type": "checkbox",
+          "options": [
+            "Yes",
+            "No",
+            "N/A"
+          ]
+        },
+        {
+          "label": "Safety glasses or goggles",
+          "type": "checkbox",
+          "options": [
+            "Yes",
+            "No",
+            "N/A"
+          ]
+        },
+        {
+          "label": "Face shields",
+          "type": "checkbox",
+          "options": [
+            "Yes",
+            "No",
+            "N/A"
+          ]
+        },
+        {
+          "label": "Hearing protection",
+          "type": "checkbox",
+          "options": [
+            "Yes",
+            "No",
+            "N/A"
+          ]
+        },
+        {
+          "label": "Respirators",
+          "type": "checkbox",
+          "options": [
+            "Yes",
+            "No",
+            "N/A"
+          ]
+        },
+        {
+          "label": "Safety boots",
+          "type": "checkbox",
+          "options": [
+            "Yes",
+            "No",
+            "N/A"
+          ]
+        },
+        {
+          "label": "High-visibility vests",
+          "type": "checkbox",
+          "options": [
+            "Yes",
+            "No",
+            "N/A"
+          ]
+        },
+        {
+          "label": "Arc flash suits",
+          "type": "checkbox",
+          "options": [
+            "Yes",
+            "No",
+            "N/A"
+          ]
+        },
+        {
+          "label": "Protective gloves",
+          "type": "checkbox",
+          "options": [
+            "Yes",
+            "No",
+            "N/A"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Fall Protection Equipment",
+      "fields": [
+        {
+          "label": "Full-body harnesses",
+          "type": "checkbox",
+          "options": [
+            "Yes",
+            "No",
+            "N/A"
+          ]
+        },
+        {
+          "label": "Lanyards and lifelines",
+          "type": "checkbox",
+          "options": [
+            "Yes",
+            "No",
+            "N/A"
+          ]
+        },
+        {
+          "label": "Anchor points",
+          "type": "checkbox",
+          "options": [
+            "Yes",
+            "No",
+            "N/A"
+          ]
+        },
+        {
+          "label": "Guardrails and toe boards",
+          "type": "checkbox",
+          "options": [
+            "Yes",
+            "No",
+            "N/A"
+          ]
+        },
+        {
+          "label": "Safety nets",
+          "type": "checkbox",
+          "options": [
+            "Yes",
+            "No",
+            "N/A"
+          ]
+        }
+      ]
+    }
+  ]
+}

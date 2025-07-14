@@ -3,8 +3,8 @@ import Layout from "@/layout/Layout";
 import { List, ListItem, ListItemText, Typography, Paper } from "@mui/material";
 import Link from "next/link";
 import EHSIntro from "@/components/EHSIntro";
-import DailySafetyReview from "@/components/Forms/DailySafetyReview";
-import EquipmentSafetyCheck from "@/components/Forms/EquipmentSafetyCheck";
+import DailySafetyReview from "@/lib/EHS/Structured_Daily_Safety_Checklist.json";
+import EquipmentSafetyCheck from "@/lib/EHS/Equipment_Inspection_Checklist.json";
 import CorrectiveActionRegister from "@/lib/EHS/Corrective_Action_Register.json";
 import InternalAuditChecklist from "@/lib/EHS/Internal_Audit_Checklist.json";
 import InternalAuditReport from "@/lib/EHS/Internal_Audit_Report.json";
@@ -30,12 +30,12 @@ export default function EHSPage() {
   
 
       <Paper sx={{ p: 4 }} elevation={4}>
-        <Typography variant="h4" gutterBottom>
+      {/*   <Typography variant="h4" gutterBottom>
           Employee Health and Safety
         </Typography>
         <Typography component="p">
           Below are the available EHS forms. Select one to begin.
-        </Typography>
+        </Typography> */}
         <List>
           {forms.map((f) => (
             <ListItem key={f.slug} component={Link} href={`/forms/${f.slug}`}>
