@@ -39,7 +39,7 @@ const FormRenderer = ({ definition }: { definition: FormDefinition }) => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    await submitEHSForm(definition.title, data);
+    await submitEHSForm( data);
   };
 
   const renderField = (field: FormField, key: string) => {
@@ -151,7 +151,8 @@ const FormRenderer = ({ definition }: { definition: FormDefinition }) => {
   };
 
   return (
-    <Paper sx={{ p: 4 }} elevation={4}>
+<Layout title="Employee Health and Safety">    
+  <Paper sx={{ p: 4 }} elevation={4}>
       <Box component="form" onSubmit={handleSubmit}>
         {definition.sections.map((section, si) => (
           <Box key={si} sx={{ mb: 3 }}>
@@ -170,6 +171,7 @@ const FormRenderer = ({ definition }: { definition: FormDefinition }) => {
         </Button>
       </Box>
     </Paper>
+    </Layout>
   );
 };
 
