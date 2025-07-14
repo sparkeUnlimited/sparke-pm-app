@@ -1,16 +1,10 @@
 "use client";
 import Layout from "@/layout/Layout";
-import {
-  List,
-  ListItem,
-  ListItemText,
-  Typography,
-  Paper,
-} from "@mui/material";
+import { List, ListItem, ListItemText, Typography, Paper } from "@mui/material";
 import Link from "next/link";
 import EHSIntro from "@/components/EHSIntro";
-import DailySafetyReview from "@/components/DailySafetyReview";
-import EquipmentSafetyCheck from "@/components/EquipmentSafetyCheck";
+import DailySafetyReview from "@/components/Forms/DailySafetyReview";
+import EquipmentSafetyCheck from "@/components/Forms/EquipmentSafetyCheck";
 import CorrectiveActionRegister from "@/lib/EHS/Corrective_Action_Register.json";
 import InternalAuditChecklist from "@/lib/EHS/Internal_Audit_Checklist.json";
 import InternalAuditReport from "@/lib/EHS/Internal_Audit_Report.json";
@@ -25,14 +19,16 @@ const forms = [
   { def: ModifiedDutyLog, slug: "modified-duty-log" },
   { def: ReturnToWorkAgreement, slug: "return-to-work-agreement" },
   { def: SafetyObjectiveWorksheet, slug: "safety-objective-worksheet" },
+  { def: DailySafetyReview, slug: "daily-safety-review" },
+  { def: EquipmentSafetyCheck, slug: "equipment-safety-check" },
 ];
 
 export default function EHSPage() {
   return (
     <Layout title="Employee Health and Safety">
       <EHSIntro />
-      <DailySafetyReview />
-      <EquipmentSafetyCheck />
+  
+
       <Paper sx={{ p: 4 }} elevation={4}>
         <Typography variant="h4" gutterBottom>
           Employee Health and Safety
