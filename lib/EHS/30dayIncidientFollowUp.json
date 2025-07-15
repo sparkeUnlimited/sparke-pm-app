@@ -1,4 +1,6 @@
 {
+  "title": "30-Day Incident Follow Up",
+  "description": "Form to document 30-day follow up details for a dangerous goods incident.",
   "30DayIncidentFollowUpReport": {
     "1_ReportAuthor": {
       "Name": "",
