@@ -22,6 +22,7 @@ import {
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Layout from "@/layout/Layout";
+import { submitEHSForm } from "@/lib/api";
 
 export type FormField = {
   label: string;
@@ -170,20 +171,16 @@ const FormRenderer = ({ definition }: { definition: FormDefinition }) => {
   };
 
   const handleSubmit = async () => {
-    const response = await fetch("/api/forms/submit", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
+    try {
+      await submitEHSForm({
         formTitle: definition.title,
         submissionDate: new Date().toISOString(),
         sections: sectionRows,
-      }),
-    });
-
-    if (response.ok) {
-      alert("Submission successful");
-    } else {
-      alert("Failed to submit");
+      });
+      alert("Form submitted successfully.");
+    } catch (err) {
+      console.error(err);
+      alert("Failed to submit form.");
     }
   };
 
