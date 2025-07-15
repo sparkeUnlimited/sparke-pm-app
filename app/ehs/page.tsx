@@ -11,6 +11,7 @@ import InternalAuditReport from "@/lib/EHS/Internal_Audit_Report.json";
 import ModifiedDutyLog from "@/lib/EHS/Modified_Duty_Log.json";
 import ReturnToWorkAgreement from "@/lib/EHS/Return_to_Work_Agreement.json";
 import SafetyObjectiveWorksheet from "@/lib/EHS/Safety_Objective_Worksheet.json";
+import ThirtyDayIncidentFollowUp from "@/lib/EHS/30dayIncidientFollowUp.json";
 
 const forms = [
   { def: CorrectiveActionRegister, slug: "corrective-action-register" },
@@ -21,6 +22,7 @@ const forms = [
   { def: SafetyObjectiveWorksheet, slug: "safety-objective-worksheet" },
   { def: DailySafetyReview, slug: "daily-safety-review" },
   { def: EquipmentSafetyCheck, slug: "equipment-safety-check" },
+  { def: ThirtyDayIncidentFollowUp, slug: "30day-incident-follow-up" },
 ];
 
 export default function EHSPage() {
