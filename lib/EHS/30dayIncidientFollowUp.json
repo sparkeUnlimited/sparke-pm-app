@@ -1,92 +1,135 @@
 {
   "title": "30-Day Incident Follow Up",
   "description": "Form to document 30-day follow up details for a dangerous goods incident.",
-  "30DayIncidentFollowUpReport": {
-    "1_ReportAuthor": {
-      "Name": "",
-      "TitleOrRole": "",
-      "Company": "",
-      "Phone24Hour": "",
-      "Email": ""
+  "sections": [
+    {
+      "title": "1. Report Author",
+      "fields": [
+        { "label": "Name", "type": "text" },
+        { "label": "TitleOrRole", "type": "text" },
+        { "label": "Company", "type": "text" },
+        { "label": "Phone24Hour", "type": "text" },
+        { "label": "Email", "type": "text" }
+      ]
     },
-    "2_ConsignorConsigneeCarrier": {
-      "Consignor": "",
-      "Consignee": "",
-      "Carrier": ""
+    {
+      "title": "2. Consignor / Consignee / Carrier",
+      "fields": [
+        { "label": "Consignor", "type": "text" },
+        { "label": "Consignee", "type": "text" },
+        { "label": "Carrier", "type": "text" }
+      ]
     },
-    "3_IncidentSummary": {
-      "EventType": ["Release", "Anticipated Release"],
-      "DateTime": "",
-      "Location": "",
-      "ModeOfTransport": ["Road", "Rail", "Marine", "Air"]
+    {
+      "title": "3. Incident Summary",
+      "fields": [
+        { "label": "EventType", "type": "checkbox-group" },
+        { "label": "DateTime", "type": "datetime" },
+        { "label": "Location", "type": "text" },
+        { "label": "ModeOfTransport", "type": "checkbox-group" }
+      ]
     },
-    "4_DangerousGoodsDetails": {
-      "Classification": "",
-      "UNNumberAndShippingName": "",
-      "QuantityBeforeIncident": "",
-      "QuantityReleased": ""
+    {
+      "title": "4. Dangerous Goods Details",
+      "fields": [
+        { "label": "Classification", "type": "text" },
+        { "label": "UNNumberAndShippingName", "type": "text" },
+        { "label": "QuantityBeforeIncident", "type": "number" },
+        { "label": "QuantityReleased", "type": "number" }
+      ]
     },
-    "5_ContainmentAndDamage": {
-      "MeansOfContainment": "",
-      "DamageOrFailureNoted": false,
-      "DamageDescription": ""
+    {
+      "title": "5. Containment and Damage",
+      "fields": [
+        { "label": "MeansOfContainment", "type": "text" },
+        { "label": "DamageOrFailureNoted", "type": "checkbox" },
+        { "label": "DamageDescription", "type": "textarea" }
+      ]
     },
-    "6_SequenceOfEvents": {
-      "Description": "",
-      "ExplosionOrFire": false,
-      "ExplosionOrFireDetails": ""
+    {
+      "title": "6. Sequence of Events",
+      "fields": [
+        { "label": "Description", "type": "textarea" },
+        { "label": "ExplosionOrFire", "type": "checkbox" },
+        { "label": "ExplosionOrFireDetails", "type": "textarea" }
+      ]
     },
-    "7_FacilityInfrastructureImpact": {
-      "FacilityClosed": false,
-      "FacilityDetails": "",
-      "TransportClosure": false,
-      "TransportClosureDetails": ""
+    {
+      "title": "7. Facility Infrastructure Impact",
+      "fields": [
+        { "label": "FacilityClosed", "type": "checkbox" },
+        { "label": "FacilityDetails", "type": "textarea" },
+        { "label": "TransportClosure", "type": "checkbox" },
+        { "label": "TransportClosureDetails", "type": "textarea" }
+      ]
     },
-    "8_PublicSafetyImpact": {
-      "NumberEvacuatedOrSheltered": 0,
-      "Duration": "",
-      "InjuriesOrFatalities": {
-        "Deaths": 0,
-        "Injuries": 0
-      }
+    {
+      "title": "8. Public Safety Impact",
+      "fields": [
+        { "label": "NumberEvacuatedOrSheltered", "type": "number" },
+        { "label": "Duration", "type": "text" },
+        { "label": "Deaths", "type": "number" },
+        { "label": "Injuries", "type": "number" }
+      ]
     },
-    "9_ERAP": {
-      "ERAPReferenceNumber": "",
-      "PersonWithERAP": "",
-      "DateTimeReported": ""
+    {
+      "title": "9. ERAP",
+      "fields": [
+        { "label": "ERAPReferenceNumber", "type": "text" },
+        { "label": "PersonWithERAP", "type": "text" },
+        { "label": "DateTimeReported", "type": "datetime" }
+      ]
     },
-    "10_ReportingTimeline": {
-      "DateOriginalReport": "",
-      "Date30DayReport": ""
+    {
+      "title": "10. Reporting Timeline",
+      "fields": [
+        { "label": "DateOriginalReport", "type": "date" },
+        { "label": "Date30DayReport", "type": "date" }
+      ]
     },
-    "11_FinancialEnvironmentalCosts": {
-      "EstimatedFinancialLoss": 0,
-      "EmergencyResponseCosts": 0,
-      "RemediationCleanupCosts": 0
+    {
+      "title": "11. Financial and Environmental Costs",
+      "fields": [
+        { "label": "EstimatedFinancialLoss", "type": "number" },
+        { "label": "EmergencyResponseCosts", "type": "number" },
+        { "label": "RemediationCleanupCosts", "type": "number" }
+      ]
     },
-    "12_RouteAndJeopardyAssessment": {
-      "RouteDescription": "",
-      "SeriousJeopardy": false,
-      "JeopardyDetails": "",
-      "DamageToPropertyOrEnvironment": ""
+    {
+      "title": "12. Route and Jeopardy Assessment",
+      "fields": [
+        { "label": "RouteDescription", "type": "textarea" },
+        { "label": "SeriousJeopardy", "type": "checkbox" },
+        { "label": "JeopardyDetails", "type": "textarea" },
+        { "label": "DamageToPropertyOrEnvironment", "type": "textarea" }
+      ]
     },
-    "13_UpdatesAndRetention": {
-      "UpdateRequirements": "Notify Director General of changes to sections 6, 9, 10, 11, 12, 16, or 19 within one year.",
-      "RetentionRequirement": "Retain for at least 2 years and provide within 15 days of written request."
+    {
+      "title": "13. Updates and Retention",
+      "fields": [
+        { "label": "UpdateRequirements", "type": "textarea" },
+        { "label": "RetentionRequirement", "type": "textarea" }
+      ]
     },
-    "SubmissionInstructions": {
-      "SubmissionMethod": "Email",
-      "Recipient": "Transportation of Dangerous Goods Directorate, Transport Canada, Ottawa, ON",
-      "Email": "dor-rcd@tc.gc.ca",
-      "Deadline": "Within 30 days of original report"
+    {
+      "title": "Submission Instructions",
+      "fields": [
+        { "label": "SubmissionMethod", "type": "text" },
+        { "label": "Recipient", "type": "text" },
+        { "label": "Email", "type": "text" },
+        { "label": "Deadline", "type": "text" }
+      ]
     },
-    "AttachmentsChecklist": [
-      "CANUTEC case number(s)",
-      "Copy of original emergency report",
-      "Investigation findings",
-      "Photos & diagrams",
-      "Witness statements",
-      "Cost estimates and invoices"
-    ]
-  }
+    {
+      "title": "Attachments Checklist",
+      "fields": [
+        { "label": "CANUTEC case number(s)", "type": "checkbox" },
+        { "label": "Copy of original emergency report", "type": "checkbox" },
+        { "label": "Investigation findings", "type": "checkbox" },
+        { "label": "Photos & diagrams", "type": "checkbox" },
+        { "label": "Witness statements", "type": "checkbox" },
+        { "label": "Cost estimates and invoices", "type": "checkbox" }
+      ]
+    }
+  ]
 }

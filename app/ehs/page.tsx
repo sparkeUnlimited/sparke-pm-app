@@ -13,26 +13,19 @@ const links = [
   { title: "Incident Reporting", href: "/ehs/incident-reporting" },
   { title: "Return to Work", href: "/ehs/return-to-work" },
   { title: "Safety Checklists", href: "/ehs/safety-checklists" },
-  { title: ModifiedDutyLog.title, href: "/forms/modified-duty-log" },
+ /*  { title: ModifiedDutyLog.title, href: "/forms/modified-duty-log" },
   { title: ReturnToWorkAgreement.title, href: "/forms/return-to-work-agreement" },
   { title: SafetyObjectiveWorksheet.title, href: "/forms/safety-objective-worksheet" },
   { title: DailySafetyReview.title, href: "/forms/daily-safety-review" },
-  { title: EquipmentSafetyCheck.title, href: "/forms/equipment-safety-check" },
+  { title: EquipmentSafetyCheck.title, href: "/forms/equipment-safety-check" }, */
 ];
 
 export default function EHSPage() {
   return (
     <Layout title="Employee Health and Safety">
       <EHSIntro />
-  
 
       <Paper sx={{ p: 4 }} elevation={4}>
-      {/*   <Typography variant="h4" gutterBottom>
-          Employee Health and Safety
-        </Typography>
-        <Typography component="p">
-          Below are the available EHS forms. Select one to begin.
-        </Typography> */}
         <List>
           {links.map((l) => (
             <ListItem key={l.href} component={Link} href={l.href}>

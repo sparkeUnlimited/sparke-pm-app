@@ -48,7 +48,7 @@ type RowData = {
 const renderFieldControl = (
   field: FormField,
   row: RowData,
-  update: (val: Partial<RowData>) => void,
+  update: (val: Partial<RowData>) => void
 ) => {
   switch (field.type) {
     case "radio":
@@ -126,7 +126,11 @@ const renderFieldControl = (
     case "text":
     default:
       return (
-        <TextField value={row.value || ""} onChange={(e) => update({ value: e.target.value })} fullWidth />
+        <TextField
+          value={row.value || ""}
+          onChange={(e) => update({ value: e.target.value })}
+          fullWidth
+        />
       );
   }
 };
@@ -185,79 +189,78 @@ const FormRenderer = ({ definition }: { definition: FormDefinition }) => {
   };
 
   return (
-   /*  <Layout title={definition.title}>*/
-      <Paper sx={{ p: 4 }} elevation={2}> 
-      
-        {definition.sections.map((section) => (
-          <Box key={section.title} mb={4}>
-            <Typography variant="h6" fontWeight="bold" gutterBottom>
-              {section.title}
-            </Typography>
-            <Table size="small">
-              <TableHead>
-                <TableRow>
-                  <TableCell>Inpection Item</TableCell>
-                  <TableCell>Value</TableCell>
-                  <TableCell />
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {sectionRows[section.title]?.map((row, idx) => {
-                  const field = section.fields.find((f) => f.label === row.fieldKey);
-                  return (
-                    <>
-                      <TableRow key={`${section.title}-${idx}`}>
-                        <TableCell sx={{ width: "30%" }}>
-                          <Select
-                            size="small"
-                            fullWidth
-                            value={row.fieldKey}
-                            onChange={(e) =>
-                              handleSelectField(section.title, idx, e.target.value as string)
-                            }
-                          >
-                            <MenuItem value="">Select field</MenuItem>
-                            {section.fields.map((f) => (
-                              <MenuItem key={f.label} value={f.label}>
-                                {f.label}
-                              </MenuItem>
-                            ))}
-                          </Select>
-                        </TableCell>
-                        <TableCell>
-                          {field && renderFieldControl(field, row, (val) => updateRow(section.title, idx, val))}
-                        </TableCell>
-                        <TableCell>
-                          <IconButton onClick={() => removeRow(section.title, idx)}>
-                            <DeleteIcon />
-                          </IconButton>
-                        </TableCell>
-                      </TableRow>
-                      {field && (field.type === "checkbox" || field.type === "dropdown") && (
-                        <TableRow key={`${section.title}-${idx}-notes`}>
-                          <TableCell colSpan={3}>
-                            <TextField
-                              fullWidth
-                              label="Notes"
-                              value={row.notes || ""}
-                              onChange={(e) => updateRow(section.title, idx, { notes: e.target.value })}
-                            />
-                          </TableCell>
-                        </TableRow>
-                      )}
-                    </>
-                  );
-                })}
-              </TableBody>
-            </Table>
-          </Box>
-        ))}
-        <Button onClick={handleSubmit} variant="contained" color="primary">
-          Submit Form
-        </Button>
-      </Paper>
+    /*  <Layout title={definition.title}>*/
+    <Paper sx={{ p: 4 }} elevation={2}>
+      {definition.sections.map((section) => (
+        <Box key={section.title} mb={4}>
+          <Typography variant="h6" fontWeight="bold" gutterBottom>
+            {section.title}
+          </Typography>
+          <Table size="small">
+            <TableHead>
+              <TableRow>
+                <TableCell>Inpection Item</TableCell>
+                <TableCell>Value</TableCell>
+                <TableCell />
+              </TableRow>
+            </TableHead>
+
+            {sectionRows[section.title]?.map((row, idx) => {
+              const field = section.fields.find((f) => f.label === row.fieldKey);
+              return (
+                <TableBody>
+                  <TableRow key={`${section.title}-${idx}`}>
+                    <TableCell sx={{ width: "30%" }}>
+                      <Select
+                        size="small"
+                        fullWidth
+                        value={row.fieldKey}
+                        onChange={(e) =>
+                          handleSelectField(section.title, idx, e.target.value as string)
+                        }
+                      >
+                        <MenuItem value="">Select field</MenuItem>
+                        {section.fields.map((f) => (
+                          <MenuItem key={f.label} value={f.label}>
+                            {f.label}
+                          </MenuItem>
+                        ))}
+                      </Select>
+                    </TableCell>
+                    <TableCell>
+                      {field &&
+                        renderFieldControl(field, row, (val) => updateRow(section.title, idx, val))}
+                    </TableCell>
+                    <TableCell>
+                      <IconButton onClick={() => removeRow(section.title, idx)}>
+                        <DeleteIcon />
+                      </IconButton>
+                    </TableCell>
+                  </TableRow>
+                  {field && (field.type === "checkbox" || field.type === "dropdown") && (
+                    <TableRow key={`${section.title}-${idx}-notes`}>
+                      <TableCell colSpan={3}>
+                        <TextField
+                          fullWidth
+                          label="Notes"
+                          value={row.notes || ""}
+                          onChange={(e) => updateRow(section.title, idx, { notes: e.target.value })}
+                        />
+                      </TableCell>
+                    </TableRow>
+                  )}
+                </TableBody>
+              );
+            })}
+          </Table>
+        </Box>
+      ))}
+      <Button onClick={handleSubmit} variant="contained" color="primary">
+        Submit Form
+      </Button>
+    </Paper>
     /* </Layout>*/
-  ); 
+  );
 };
 
 export default FormRenderer;

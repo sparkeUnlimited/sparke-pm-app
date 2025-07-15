@@ -11,6 +11,7 @@ export default function Page() {
         <Typography variant="h4" gutterBottom>
           {formDefinition.title}
         </Typography>
+        <Typography component={"p"}>{formDefinition.description}</Typography>
         <ThirtyDayIncidentFollowUpForm />
       </Paper>
     </Layout>
