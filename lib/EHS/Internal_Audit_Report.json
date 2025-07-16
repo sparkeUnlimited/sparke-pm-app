@@ -45,7 +45,7 @@
         },
         {
           "label": "Date",
-          "type": "date"
+          "type": "staticDate"
         }
       ]
     }
