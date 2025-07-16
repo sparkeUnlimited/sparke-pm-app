@@ -19,6 +19,7 @@ import {
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { submitEHSForm } from "@/lib/api";
+import SignaturePad from "./SignaturePad";
 
 export type FormField = {
   label: string;
@@ -106,6 +107,24 @@ const renderFieldControl = (
           fullWidth
         />
       );
+    case "signature":
+      return (
+        <Box>
+          <TextField
+            type="date"
+            value={row.value?.date || new Date().toISOString().split("T")[0]}
+            disabled
+            fullWidth
+            sx={{ mb: 1 }}
+          />
+          <SignaturePad
+            value={row.value?.signature || ""}
+            onChange={(data) =>
+              update({ value: { ...(row.value || {}), signature: data } })
+            }
+          />
+        </Box>
+      );
     case "text":
     default:
       return (
@@ -148,7 +167,16 @@ const FormRenderer = ({ formJson }: { formJson: FormJson }) => {
   ) => {
     setSectionRows((prev) => {
       const rows = prev[section] ? [...prev[section]] : [];
-      rows[idx] = { fieldKey };
+      const field = formJson.sections
+        .find((s) => s.title === section)?.fields.find((f) => f.label === fieldKey);
+      const rowData: RowData = { fieldKey };
+      if (field?.type === "signature") {
+        rowData.value = {
+          date: new Date().toISOString().split("T")[0],
+          signature: "",
+        };
+      }
+      rows[idx] = rowData;
       // append new row if last and not empty
       if (idx === rows.length - 1 && fieldKey) {
         rows.push({ fieldKey: "" });
