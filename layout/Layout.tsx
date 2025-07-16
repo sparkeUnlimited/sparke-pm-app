@@ -1,6 +1,7 @@
 import { Box, Container } from "@mui/material";
 import Head from "next/head";
 import Nav from "@/components/Nav";
+import BreadcrumbNav from "@/components/BreadcrumbsNav";
 import { ReactNode } from "react";
 
 type LayoutProps = {
@@ -70,6 +71,7 @@ const Layout = ({ title = "PM Tool - Spark-E", children }: LayoutProps) => {
         }}
       >
         <Nav />
+        <BreadcrumbNav />
         <Box sx={{ flexGrow: 1, width: "100%", py: 4 }}>{children}</Box>
       </Container>
     </>
