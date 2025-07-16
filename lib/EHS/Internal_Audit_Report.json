@@ -35,15 +35,6 @@
           "type": "textarea"
         }
       ]
-    },
-    {
-      "title": "3. Auditor Signature",
-      "fields": [
-        {
-          "label": "Auditor Signature",
-          "type": "signature"
-        }
-      ]
     }
   ]
 }

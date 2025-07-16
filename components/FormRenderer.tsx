@@ -18,8 +18,8 @@ import {
   Typography,
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { submitEHSForm } from "@/lib/api";
-import SignaturePad from "./SignaturePad";
+
+import SignaturePad from "@/components/SignaturePad";
 
 export type FormField = {
   label: string;
@@ -47,7 +47,7 @@ type RowData = {
 const renderFieldControl = (
   field: FormField,
   row: RowData,
-  update: (val: Partial<RowData>) => void,
+  update: (val: Partial<RowData>) => void
 ) => {
   switch (field.type) {
     case "checkbox":
@@ -62,8 +62,7 @@ const renderFieldControl = (
                   onChange={(e) => {
                     const arr = Array.isArray(row.value) ? [...row.value] : [];
                     if (e.target.checked) arr.push(opt);
-                    else
-                      update({ value: arr.filter((v) => v !== opt) });
+                    else update({ value: arr.filter((v) => v !== opt) });
                     update({ value: arr });
                   }}
                 />
@@ -76,10 +75,7 @@ const renderFieldControl = (
     case "dropdown":
       return (
         <FormControl fullWidth size="small">
-          <Select
-            value={row.value || ""}
-            onChange={(e) => update({ value: e.target.value })}
-          >
+          <Select value={row.value || ""} onChange={(e) => update({ value: e.target.value })}>
             {field.options?.map((opt) => (
               <MenuItem key={opt} value={opt}>
                 {opt}
@@ -107,24 +103,23 @@ const renderFieldControl = (
           fullWidth
         />
       );
-    case "signature":
+    /* case "signature":
       return (
         <Box>
+          <SignaturePad
+            onChange={(sig) => {
+              setClientSig(sig);
+            }}
+          />
           <TextField
             type="date"
-            value={row.value?.date || new Date().toISOString().split("T")[0]}
+            value={new Date().toISOString().split("T")[0]}
             disabled
             fullWidth
             sx={{ mb: 1 }}
           />
-          <SignaturePad
-            value={row.value?.signature || ""}
-            onChange={(data) =>
-              update({ value: { ...(row.value || {}), signature: data } })
-            }
-          />
         </Box>
-      );
+      ); */
     case "text":
     default:
       return (
@@ -139,7 +134,7 @@ const renderFieldControl = (
 
 const FormRenderer = ({ formJson }: { formJson: FormJson }) => {
   const [sectionRows, setSectionRows] = useState<Record<string, RowData[]>>({});
-
+  const [clientSig, setClientSig] = useState("");
   useEffect(() => {
     const init: Record<string, RowData[]> = {};
     formJson.sections.forEach((s) => {
@@ -148,11 +143,7 @@ const FormRenderer = ({ formJson }: { formJson: FormJson }) => {
     setSectionRows(init);
   }, [formJson]);
 
-  const updateRow = (
-    section: string,
-    idx: number,
-    row: Partial<RowData>,
-  ) => {
+  const updateRow = (section: string, idx: number, row: Partial<RowData>) => {
     setSectionRows((prev) => {
       const rows = prev[section] ? [...prev[section]] : [];
       rows[idx] = { ...rows[idx], ...row };
@@ -160,22 +151,19 @@ const FormRenderer = ({ formJson }: { formJson: FormJson }) => {
     });
   };
 
-  const handleSelectField = (
-    section: string,
-    idx: number,
-    fieldKey: string,
-  ) => {
+  const handleSelectField = (section: string, idx: number, fieldKey: string) => {
     setSectionRows((prev) => {
       const rows = prev[section] ? [...prev[section]] : [];
       const field = formJson.sections
-        .find((s) => s.title === section)?.fields.find((f) => f.label === fieldKey);
+        .find((s) => s.title === section)
+        ?.fields.find((f) => f.label === fieldKey);
       const rowData: RowData = { fieldKey };
-      if (field?.type === "signature") {
+      /* if (field?.type === "signature") {
         rowData.value = {
           date: new Date().toISOString().split("T")[0],
-          signature: "",
+          signature: setClientSig(""),
         };
-      }
+      } */
       rows[idx] = rowData;
       // append new row if last and not empty
       if (idx === rows.length - 1 && fieldKey) {
@@ -194,22 +182,10 @@ const FormRenderer = ({ formJson }: { formJson: FormJson }) => {
     });
   };
 
-  const handleSubmit = async () => {
-    try {
-      await submitEHSForm({
-        formTitle: formJson.title,
-        submissionDate: new Date().toISOString(),
-        sections: sectionRows,
-      });
-      alert("Form submitted successfully.");
-    } catch (err) {
-      console.error(err);
-      alert("Failed to submit form.");
-    }
-  };
+  
 
   return (
-    <Box>
+    <>
       {formJson.sections.map((section) => (
         <Box key={section.title} mb={4}>
           <Typography variant="h6" fontWeight="bold" gutterBottom>
@@ -235,11 +211,7 @@ const FormRenderer = ({ formJson }: { formJson: FormJson }) => {
                           fullWidth
                           value={row.fieldKey}
                           onChange={(e) =>
-                            handleSelectField(
-                              section.title,
-                              idx,
-                              e.target.value as string,
-                            )
+                            handleSelectField(section.title, idx, e.target.value as string)
                           }
                         >
                           <MenuItem value="">Select field</MenuItem>
@@ -253,7 +225,7 @@ const FormRenderer = ({ formJson }: { formJson: FormJson }) => {
                       <TableCell>
                         {field &&
                           renderFieldControl(field, row, (val) =>
-                            updateRow(section.title, idx, val),
+                            updateRow(section.title, idx, val)
                           )}
                       </TableCell>
                       <TableCell>
@@ -262,23 +234,22 @@ const FormRenderer = ({ formJson }: { formJson: FormJson }) => {
                         </IconButton>
                       </TableCell>
                     </TableRow>
-                    {field &&
-                      (field.type === "checkbox" || field.type === "dropdown") && (
-                        <TableRow key={`${section.title}-${idx}-notes`}>
-                          <TableCell colSpan={3}>
-                            <TextField
-                              fullWidth
-                              label="Notes"
-                              value={row.notes || ""}
-                              onChange={(e) =>
-                                updateRow(section.title, idx, {
-                                  notes: e.target.value,
-                                })
-                              }
-                            />
-                          </TableCell>
-                        </TableRow>
-                      )}
+                    {field && (field.type === "checkbox" || field.type === "dropdown") && (
+                      <TableRow key={`${section.title}-${idx}-notes`}>
+                        <TableCell colSpan={3}>
+                          <TextField
+                            fullWidth
+                            label="Notes"
+                            value={row.notes || ""}
+                            onChange={(e) =>
+                              updateRow(section.title, idx, {
+                                notes: e.target.value,
+                              })
+                            }
+                          />
+                        </TableCell>
+                      </TableRow>
+                    )}
                   </>
                 );
               })}
@@ -286,10 +257,24 @@ const FormRenderer = ({ formJson }: { formJson: FormJson }) => {
           </Table>
         </Box>
       ))}
-      <Button onClick={handleSubmit} variant="contained" color="primary">
-        Submit Form
-      </Button>
-    </Box>
+
+      <Typography variant="h6" fontWeight="bold" gutterBottom>
+        Auditor Signature
+      </Typography>
+      <SignaturePad
+        onChange={(sig) => {
+          setClientSig(sig);
+        }}
+      />
+      <TextField
+        type="date"
+        value={new Date().toISOString().split("T")[0]}
+        disabled
+        sx={{ mb: 1 }}
+      />
+
+      
+    </>
   );
 };
 

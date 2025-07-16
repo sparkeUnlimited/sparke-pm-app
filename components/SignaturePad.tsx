@@ -1,107 +1,80 @@
-import { useRef, useEffect } from "react";
+"use client";
+import { Box, Button } from "@mui/material";
+import { useRef } from "react";
 
-const SignaturePad = ({
-  value,
-  onChange,
-}: {
-  value?: string;
-  onChange: (dataUrl: string) => void;
-}) => {
-  const canvasRef = useRef<HTMLCanvasElement | null>(null);
-  const drawing = useRef(false);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-    ctx.lineWidth = 2;
-    ctx.lineCap = "round";
-
-    const start = (e: MouseEvent | TouchEvent) => {
-      drawing.current = true;
-      const { offsetX, offsetY } = getPoint(e, canvas);
-      ctx.beginPath();
-      ctx.moveTo(offsetX, offsetY);
-    };
-
-    const draw = (e: MouseEvent | TouchEvent) => {
-      if (!drawing.current) return;
-      const { offsetX, offsetY } = getPoint(e, canvas);
-      ctx.lineTo(offsetX, offsetY);
-      ctx.stroke();
-    };
-
-    const end = () => {
-      if (!drawing.current) return;
-      drawing.current = false;
-      onChange(canvas.toDataURL());
-    };
-
-    const mouseup = () => end();
-    const touchend = () => end();
-
-    canvas.addEventListener("mousedown", start);
-    canvas.addEventListener("mousemove", draw);
-    window.addEventListener("mouseup", mouseup);
-    canvas.addEventListener("touchstart", start);
-    canvas.addEventListener("touchmove", draw);
-    window.addEventListener("touchend", touchend);
-
-    return () => {
-      canvas.removeEventListener("mousedown", start);
-      canvas.removeEventListener("mousemove", draw);
-      window.removeEventListener("mouseup", mouseup);
-      canvas.removeEventListener("touchstart", start);
-      canvas.removeEventListener("touchmove", draw);
-      window.removeEventListener("touchend", touchend);
-    };
-  }, [onChange]);
-
-  const clear = () => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    onChange("");
-  };
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (canvas && value) {
-      const img = new Image();
-      img.src = value;
-      img.onload = () => {
-        const ctx = canvas.getContext("2d");
-        if (ctx) ctx.drawImage(img, 0, 0);
-      };
-    }
-  }, [value]);
-
-  return (
-    <div>
-      <canvas
-        ref={canvasRef}
-        width={300}
-        height={150}
-        style={{ border: "1px solid #000", display: "block" }}
-      />
-      <button type="button" onClick={clear} style={{ marginTop: 4 }}>
-        Clear
-      </button>
-    </div>
-  );
+type Props = {
+  onChange?: (dataUrl: string) => void;
 };
 
-function getPoint(e: MouseEvent | TouchEvent, canvas: HTMLCanvasElement) {
-  if (e instanceof MouseEvent) {
-    const rect = canvas.getBoundingClientRect();
-    return { offsetX: e.clientX - rect.left, offsetY: e.clientY - rect.top };
-  }
-  const t = e.touches[0];
-  const rect = canvas.getBoundingClientRect();
-  return { offsetX: t.clientX - rect.left, offsetY: t.clientY - rect.top };
-}
+export default function SignaturePad({ onChange }: Props) {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const drawing = useRef(false);
 
-export default SignaturePad;
+  const canvasWidth = 300;
+  const canvasHeight = 150;
+
+  const getContext = () => canvasRef.current?.getContext("2d") || null;
+
+  const getPos = (e: React.PointerEvent<HTMLCanvasElement>) => {
+    const rect = canvasRef.current!.getBoundingClientRect();
+    return { x: e.clientX - rect.left, y: e.clientY - rect.top };
+  };
+
+  const start = (e: React.PointerEvent<HTMLCanvasElement>) => {
+    drawing.current = true;
+    const ctx = getContext();
+    if (!ctx) return;
+    const { x, y } = getPos(e);
+    ctx.beginPath();
+    ctx.moveTo(x, y);
+  };
+
+  const draw = (e: React.PointerEvent<HTMLCanvasElement>) => {
+    if (!drawing.current) return;
+    const ctx = getContext();
+    if (!ctx) return;
+    const { x, y } = getPos(e);
+    ctx.lineWidth = 2;
+    ctx.lineCap = "round";
+    ctx.strokeStyle = "#000";
+    ctx.lineTo(x, y);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(x, y);
+  };
+
+  const end = () => {
+    if (!drawing.current) return;
+    drawing.current = false;
+    if (canvasRef.current && onChange) {
+      onChange(canvasRef.current.toDataURL());
+    }
+  };
+
+  const clear = () => {
+    const ctx = getContext();
+    const canvas = canvasRef.current;
+    if (ctx && canvas) {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+    onChange?.("");
+  };
+
+  return (
+    <Box>
+      <canvas
+        ref={canvasRef}
+        width={canvasWidth}
+        height={canvasHeight}
+        style={{ border: "1px solid #000", touchAction: "none" }}
+        onPointerDown={start}
+        onPointerMove={draw}
+        onPointerUp={end}
+        onPointerLeave={end}
+      />
+      <Button onClick={clear} size="small" sx={{ mt: 1 }}>
+        Clear
+      </Button>
+    </Box>
+  );
+}
