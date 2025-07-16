@@ -42,10 +42,6 @@
         {
           "label": "Auditor Signature",
           "type": "signature"
-        },
-        {
-          "label": "Date",
-          "type": "date"
         }
       ]
     }
