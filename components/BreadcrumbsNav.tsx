@@ -24,15 +24,27 @@ export default function BreadcrumbNav() {
         accumulated += `/${segment}`;
         const label = makeLabel(segment);
         const isLast = index === pathnames.length - 1;
+        const isLink = !isLast && segment !== "forms";
 
-        return isLast ? (
-          <Typography key={accumulated} color="text.primary" sx={{ fontWeight: 800 }}>
-            {label}
-          </Typography>
-        ) : (
-          <MuiLink key={accumulated} component={Link} href={accumulated} underline="hover" color="inherit" sx={{ fontWeight: 800 }}>
+        return isLink ? (
+          <MuiLink
+            key={accumulated}
+            component={Link}
+            href={accumulated}
+            underline="hover"
+            color="inherit"
+            sx={{ fontWeight: 800 }}
+          >
             {label}
           </MuiLink>
+        ) : (
+          <Typography
+            key={accumulated}
+            color="text.primary"
+            sx={{ fontWeight: 800 }}
+          >
+            {label}
+          </Typography>
         );
       })}
     </Breadcrumbs>
