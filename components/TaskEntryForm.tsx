@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Box, Button, Paper, Stack, TextField, Typography } from "@mui/material";
+import SignaturePad from "@/components/SignaturePad";
 
 type Subtask = { name: string };
 type Material = { name: string; dateNeeded: string; leadTimeDays: number };
@@ -11,6 +12,8 @@ const TaskEntryForm = () => {
   const [subtasks, setSubtasks] = useState<Subtask[]>([]);
   const [materials, setMaterials] = useState<Material[]>([]);
   const [equipment, setEquipment] = useState<Equipment[]>([]);
+  const [signature, setSignature] = useState("");
+  const currentDate = new Date().toISOString().split("T")[0];
 
   const addSubtask = () => setSubtasks([...subtasks, { name: "" }]);
   const updateSubtask = (index: number, value: string) => {
@@ -159,6 +162,8 @@ const TaskEntryForm = () => {
               + Add Equipment
             </Button>
           </Box>
+          <SignaturePad onChange={setSignature} />
+          <TextField type="date" value={currentDate} disabled fullWidth sx={{ mb: 1 }} />
           <Button type="submit" variant="contained">
             Save Task
           </Button>

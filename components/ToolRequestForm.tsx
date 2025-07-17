@@ -8,12 +8,15 @@ import {
   Typography,
 } from "@mui/material";
 import { useState } from "react";
+import SignaturePad from "@/components/SignaturePad";
 
 const ToolRequestForm = () => {
   const [toolName, setToolName] = useState("");
   const [quantity, setQuantity] = useState(1);
   const [priority, setPriority] = useState("Normal");
   const [notes, setNotes] = useState("");
+  const [signature, setSignature] = useState("");
+  const currentDate = new Date().toISOString().split("T")[0];
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -77,6 +80,8 @@ const ToolRequestForm = () => {
             multiline
             minRows={3}
           />
+          <SignaturePad onChange={setSignature} />
+          <TextField type="date" value={currentDate} disabled fullWidth sx={{ mb: 1 }} />
           <Box textAlign="right">
             <Button type="submit" variant="contained" size="large">
               Submit Request

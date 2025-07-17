@@ -23,6 +23,7 @@ import {
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Layout from "@/layout/Layout";
+import SignaturePad from "@/components/SignaturePad";
 
 export type FormField = {
   label: string;
@@ -137,6 +138,8 @@ const renderFieldControl = (
 
 const FormRenderer = ({ definition }: { definition: FormDefinition }) => {
   const [sectionRows, setSectionRows] = useState<Record<string, RowData[]>>({});
+  const [signature, setSignature] = useState("");
+  const currentDate = new Date().toISOString().split("T")[0];
 
   useEffect(() => {
     const init: Record<string, RowData[]> = {};
@@ -182,6 +185,8 @@ const FormRenderer = ({ definition }: { definition: FormDefinition }) => {
         formTitle: definition.title,
         submissionDate: new Date().toISOString(),
         sections: sectionRows,
+        signature,
+        date: currentDate,
       }),
     });
 
@@ -264,6 +269,12 @@ const FormRenderer = ({ definition }: { definition: FormDefinition }) => {
           </Table>
         </Box>
       ))}
+      <Typography variant="h6" fontWeight="bold" gutterBottom>
+        Signature
+      </Typography>
+      <SignaturePad onChange={setSignature} />
+      <TextField type="date" value={currentDate} disabled sx={{ mb: 1 }} />
+
       <Button onClick={handleSubmit} variant="contained" color="primary">
         Submit Form
       </Button>

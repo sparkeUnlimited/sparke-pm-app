@@ -25,6 +25,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import AddIcon from "@mui/icons-material/Add";
 import { getServices, ServiceItem } from "@/lib/msLists";
 import { sendEstimateEmail, ensureCustomerFolder } from "@/lib/api";
+import SignaturePad from "@/components/SignaturePad";
 
 const provinces = [
   { code: "AB", name: "Alberta" },
@@ -98,6 +99,8 @@ const EstimateForm = () => {
   const [hydroFee, setHydroFee] = useState(0);
   const [discountType, setDiscountType] = useState("None");
   const [discountValue, setDiscountValue] = useState(0);
+  const [signature, setSignature] = useState("");
+  const currentDate = new Date().toISOString().split("T")[0];
 
   useEffect(() => {
     getServices().then(setServices);
@@ -558,6 +561,8 @@ const EstimateForm = () => {
               <Typography variant="h6" fontWeight="bold">
                 Grand Total: {grandTotal.toFixed(2)}
               </Typography>
+              <SignaturePad onChange={setSignature} />
+              <TextField type="date" value={currentDate} disabled fullWidth sx={{ mb: 1 }} />
               <Button type="submit" variant="contained">
                 Submit Estimate
               </Button>

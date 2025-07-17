@@ -1,4 +1,5 @@
 import { useState } from "react";
+import SignaturePad from "@/components/SignaturePad";
 import {
   Box,
   Paper,
@@ -22,6 +23,8 @@ const safetyChecks = [
 const EquipmentSafetyCheck = () => {
   const [selectedEquipment, setSelectedEquipment] = useState("");
   const [checks, setChecks] = useState<boolean[]>(safetyChecks.map(() => false));
+  const [signature, setSignature] = useState("");
+  const currentDate = new Date().toISOString().split("T")[0];
 
   const toggleCheck = (i: number) => {
     const updated = [...checks];
@@ -67,6 +70,9 @@ const EquipmentSafetyCheck = () => {
               label={item}
             />
           ))}
+
+          <SignaturePad onChange={setSignature} />
+          <TextField type="date" value={currentDate} disabled fullWidth sx={{ mb: 1 }} />
 
           <Button variant="contained" type="submit">
             Submit Equipment Check
