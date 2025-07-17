@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { fetchWeather, Weather } from "@/lib/weather";
 import { Box, Button, Paper, Stack, TextField, Typography, Slider } from "@mui/material";
+import SignaturePad from "@/components/SignaturePad";
 import { getTasks, submitJournalEntry } from "@/lib/msLists";
 import {
   saveJournalDraft,
@@ -23,6 +24,8 @@ const JobSiteJournalForm = () => {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [weather, setWeather] = useState<Weather | null>(null);
   const [weatherUpdatedAt, setWeatherUpdatedAt] = useState<string | null>(null);
+  const [signature, setSignature] = useState("");
+  const currentDate = new Date().toISOString().split("T")[0];
 
   const cacheKey = "cachedWeather";
 
@@ -172,6 +175,8 @@ const JobSiteJournalForm = () => {
               ))}
             </Stack>
           </Box>
+          <SignaturePad onChange={setSignature} />
+          <TextField type="date" value={currentDate} disabled fullWidth sx={{ mb: 1 }} />
           <Button type="submit" variant="contained">
             Submit
           </Button>
