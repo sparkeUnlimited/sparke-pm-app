@@ -198,8 +198,22 @@ const FormRenderer = ({ definition }: { definition: FormDefinition }) => {
   };
 
   return (
-    /*  <Layout title={definition.title}>*/
+  // <Layout title={definition.title}>
     <Paper sx={{ p: 4 }} elevation={2}>
+      <Box mb={3}>
+        <Typography variant="h4" gutterBottom>
+          {definition.title}
+        </Typography>
+        <Typography component="p">{definition.description}</Typography>
+      </Box>
+      <Box mb={2}>
+        <TextField
+          type="date"
+          value={currentDate}
+          disabled
+          sx={{ mb: 1, width: "200px" }}
+        />
+        </Box>
       {definition.sections.map((section) => (
         <Box key={section.title} mb={4}>
           <Typography variant="h6" fontWeight="bold" gutterBottom>
@@ -269,7 +283,7 @@ const FormRenderer = ({ definition }: { definition: FormDefinition }) => {
           </Table>
         </Box>
       ))}
-      <Typography variant="h6" fontWeight="bold" gutterBottom>
+      {/* <Typography variant="h6" fontWeight="bold" gutterBottom>
         Signature
       </Typography>
       <SignaturePad onChange={setSignature} />
@@ -277,10 +291,10 @@ const FormRenderer = ({ definition }: { definition: FormDefinition }) => {
 
       <Button onClick={handleSubmit} variant="contained" color="primary">
         Submit Form
-      </Button>
+      </Button> */}
     </Paper>
-    /* </Layout>*/
-  );
+// </Layout>
+   );
 };
 
 export default FormRenderer;

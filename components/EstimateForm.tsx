@@ -177,7 +177,9 @@ const EstimateForm = () => {
         ? subtotal * (discountValue / 100)
         : 0;
 
-  const grandTotal = subtotal - discountAmt;
+  const totalAmt = subtotal - discountAmt;
+  const taxAmt = totalAmt * 0.13;
+  const grandTotal = totalAmt + taxAmt;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -211,6 +213,8 @@ const EstimateForm = () => {
         cost,
         warranty,
         discountAmt,
+        totalAmt,
+        taxAmt,
         grandTotal,
       },
     };
@@ -558,6 +562,8 @@ const EstimateForm = () => {
                 )}
               </Stack>
               <Typography>Total Discount: {discountAmt.toFixed(2)}</Typography>
+              <Typography>Sub Total (Excluding Tax): {totalAmt.toFixed(2)}</Typography>
+              <Typography>Tax: {taxAmt.toFixed(2)}</Typography>
               <Typography variant="h6" fontWeight="bold">
                 Grand Total: {grandTotal.toFixed(2)}
               </Typography>
