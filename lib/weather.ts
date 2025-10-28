@@ -1,5 +1,3 @@
-import axios from "axios";
-
 export type Weather = {
   temperature: number;
   windSpeed: number;
@@ -14,10 +12,16 @@ export const fetchWeather = async (lat: number, lon: number): Promise<Weather | 
   const url = `https://api.tomorrow.io/v4/weather/realtime?location=${lat},${lon}&apikey=${API_KEY}`;
 
   try {
-    const response = await axios.get(url);
-    const values = response.data?.data?.values;
+    const response = await fetch(url);
+    if (!response.ok) {
+      console.error("Weather fetch error: unexpected status", response.status, response.statusText);
+      return null;
+    }
 
-    console.log("Weather API response:", response.data);
+    const data = await response.json();
+    const values = data?.data?.values;
+
+    console.log("Weather API response:", data);
 
     if (!values) return null;
 
